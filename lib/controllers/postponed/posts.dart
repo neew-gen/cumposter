@@ -9,7 +9,6 @@ class PostponedPostsController extends GetxController {
 
   Future fetchPostponedPosts(groupId) async {
     var fetchedPostponedPosts = await getPostponedPosts(groupId.toString());
-    print(fetchedPostponedPosts.length);
     postponedPosts.value = fetchedPostponedPosts;
     _fetchPostponedPostsAuthors(fetchedPostponedPosts);
   }

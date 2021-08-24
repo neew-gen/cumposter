@@ -12,8 +12,8 @@ class PostponedAddScreenImages extends StatelessWidget {
 
     _imagesFromGalleryController.fetchImagesFromGallery();
 
-    return Obx(() => GridView.builder(
-          itemCount: _imagesFromGalleryController.imageList.length,
+    return Obx(() => GridView(
+          // itemCount: _imagesFromGalleryController.imageList.length,
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount:
                 MediaQuery.of(context).orientation == Orientation.landscape
@@ -23,11 +23,14 @@ class PostponedAddScreenImages extends StatelessWidget {
             mainAxisSpacing: 8,
             childAspectRatio: (2 / 2),
           ),
-          itemBuilder: (BuildContext context, int index) {
-            return PostponedAddScreenImage(
-              index,
-            );
-          },
+          children: [
+            for (int i = 0;
+                i < _imagesFromGalleryController.imageList.length;
+                i++)
+              PostponedAddScreenImage(
+                i,
+              ),
+          ],
         ));
   }
 }
