@@ -10,9 +10,9 @@ class WelcomeController extends GetxController {
   checkCredentials() async {
     await _fetchCredentials();
     if (accessToken != null && userId != null) {
-      Get.off(HomeScreen());
+      Get.off(() => HomeScreen());
     } else {
-      Get.off(AuthScreen());
+      Get.off(() => AuthScreen());
     }
   }
 
