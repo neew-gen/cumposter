@@ -1,12 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:vk_group_admin/controllers/postponed/posts.dart';
 import 'package:vk_group_admin/widgets/postponed/add_screen/images.dart';
 import 'package:vk_group_admin/widgets/postponed/add_screen/panel.dart';
 
 class PostponedAddScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final PostponedPostsController _postponedPostsController = Get.find();
+
+    _buildAppBar(postsLength) {
+      return Text('Добавить запись ($postsLength/100)');
+    }
+
     return Scaffold(
-      appBar: AppBar(title: const Text('Добавить запись')),
+      appBar: AppBar(
+        title: Obx(
+          () => _buildAppBar(_postponedPostsController.postponedPosts.length),
+        ),
+      ),
       body: PostponedAddScreenImages(),
       bottomNavigationBar: StickyBottomAppBar(
         child: PostponedAddScreenPanel(),

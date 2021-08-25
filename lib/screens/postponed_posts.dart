@@ -20,8 +20,16 @@ class PostponedPostsScreen extends StatelessWidget {
       Get.to(() => PostponedAddScreen());
     }
 
+    _buildAppBar(postsLength) {
+      return Text('Отложенные записи ($postsLength/100)');
+    }
+
     return Scaffold(
-      appBar: AppBar(title: const Text('Отложенные записи')),
+      appBar: AppBar(
+        title: Obx(
+          () => _buildAppBar(_postponedPostsController.postponedPosts.length),
+        ),
+      ),
       body: Obx(
         () => ListView.builder(
           itemCount: _postponedPostsController.postponedPosts.length,

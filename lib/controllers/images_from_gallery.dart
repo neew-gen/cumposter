@@ -10,19 +10,32 @@ class ImagesFromGalleryController extends GetxController {
   var entityList = [].obs;
 
   Future fetchImagesFromGallery() async {
-    if (await Permission.storage.request().isGranted) {
-      var downloadsFolderPath = await ExtStorage.getExternalStoragePublicDirectory(ExtStorage.DIRECTORY_DOWNLOADS);
-      var filesList = Directory(downloadsFolderPath!).listSync();
-      var images = [];
-      for (var file in filesList) {
-        var path = file.path;
-        if (isImage(path)) {
-          images.add(file);
-        }
+    await Permission.manageExternalStorage.request();
+    var downloadsFolderPath = await ExtStorage.getExternalStoragePublicDirectory(ExtStorage.DIRECTORY_DOWNLOADS);
+    var filesList = Directory(downloadsFolderPath!).listSync();
+    var images = [];
+    for (var file in filesList) {
+      var path = file.path;
+      if (isImage(path)) {
+        images.add(file);
       }
-      // сортировка по убыванию
-      images.sort((a, b) => b.statSync().changed.compareTo(a.statSync().changed));
-      imageList.value = images;
     }
+    // сортировка по убыванию
+    images.sort((a, b) => b.statSync().changed.compareTo(a.statSync().changed));
+    imageList.value = images;
+    // if (await Permission.storage.request().isGranted) {
+    //   var downloadsFolderPath = await ExtStorage.getExternalStoragePublicDirectory(ExtStorage.DIRECTORY_DOWNLOADS);
+    //   var filesList = Directory(downloadsFolderPath!).listSync();
+    //   var images = [];
+    //   for (var file in filesList) {
+    //     var path = file.path;
+    //     if (isImage(path)) {
+    //       images.add(file);
+    //     }
+    //   }
+    //   // сортировка по убыванию
+    //   images.sort((a, b) => b.statSync().changed.compareTo(a.statSync().changed));
+    //   imageList.value = images;
+    // }
   }
 }
