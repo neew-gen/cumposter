@@ -8,88 +8,67 @@ import 'package:vk_group_admin/controllers/postponed/add/create.dart';
 import 'package:vk_group_admin/controllers/postponed/add/options.dart';
 import 'package:get/get.dart';
 
-// class PostponedAddScreenTextField extends StatefulWidget {
-//   @override
-//   _State createState() => _State();
-// }
-//
-// class _State extends State<PostponedAddScreenTextField> {
-//   late TextEditingController _controller;
-//   final PostponedAddOptionsController _postponedAddTimeController =
-//       Get.put(PostponedAddOptionsController());
-//   final PostponedCreateController _postponedCreateController =
-//       Get.put(PostponedCreateController());
-//   final PostponedAddOptionsController _postponedAddOptionsController =
-//   Get.put(PostponedAddOptionsController());
-//
-//   @override
-//   void initState() {
-//     super.initState();
-//   }
-//
-//   @override
-//   void dispose() {
-//     _controller.clear();
-//     super.dispose();
-//   }
-//
-//   _textChange(text) {
-//     _postponedAddTimeController.updateText(text);
-//     _postponedCreateController.fetchCanCreate();
-//   }
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return Row(
-//       children: [
-//         Expanded(
-//           child: Obx(
-//             () => TextFormField(
-//               initialValue: _postponedAddOptionsController.text.value,
-//               decoration: InputDecoration(
-//                 border: UnderlineInputBorder(),
-//                 labelText: 'Текст записи',
-//               ),
-//               onChanged: (text) {
-//                 _textChange(text);
-//               },
-//             ),
-//           ),
-//         )
-//       ],
-//     );
-//   }
-// }
+class PostponedAddScreenTextField extends StatefulWidget {
+  @override
+  _State createState() => _State();
+}
 
-class PostponedAddScreenTextField extends StatelessWidget {
+class _State extends State<PostponedAddScreenTextField> {
   final PostponedAddOptionsController _postponedAddTimeController =
       Get.put(PostponedAddOptionsController());
   final PostponedCreateController _postponedCreateController =
       Get.put(PostponedCreateController());
+  final PostponedAddOptionsController _postponedAddOptionsController =
+      Get.put(PostponedAddOptionsController());
+  final _controller = TextEditingController();
 
-  _textChange(text) {
-    _postponedAddTimeController.updateText(text);
-    _postponedCreateController.fetchCanCreate();
+  final _focusNode = FocusNode();
+
+  @override
+  void initState() {
+    // _focusNode.addListener(() {
+    //   print(_focusNode.hasFocus);
+    // });
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _focusNode.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     final PostponedAddOptionsController _postponedAddOptionsController =
         Get.put(PostponedAddOptionsController());
+
     var text = _postponedAddOptionsController.text;
+    _textChange(text) {
+      _postponedAddTimeController.updateText(text);
+      _postponedCreateController.fetchCanCreate();
+    }
 
     return Row(
       children: [
         Expanded(
           child: Obx(
             () => TextFormField(
-              controller: TextEditingController()..text = '$text',
+              controller: _controller
+                ..value = TextEditingValue(
+                  text: '$text',
+                  selection: TextSelection.collapsed(offset: '$text'.length),
+                ),
               decoration: InputDecoration(
                 border: UnderlineInputBorder(),
                 labelText: 'Текст записи',
               ),
               onChanged: (text) {
                 _textChange(text);
+                // _controller.value = TextEditingValue(
+                //   text: text,
+                //   selection: TextSelection.collapsed(offset: text.length),
+                // );
               },
             ),
           ),
@@ -98,6 +77,47 @@ class PostponedAddScreenTextField extends StatelessWidget {
     );
   }
 }
+
+// class PostponedAddScreenTextField extends StatelessWidget {
+//   final PostponedAddOptionsController _postponedAddTimeController =
+//       Get.put(PostponedAddOptionsController());
+//   final PostponedCreateController _postponedCreateController =
+//       Get.put(PostponedCreateController());
+//
+//   _textChange(text) {
+//     _postponedAddTimeController.updateText(text);
+//     _postponedCreateController.fetchCanCreate();
+//   }
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     final PostponedAddOptionsController _postponedAddOptionsController =
+//         Get.put(PostponedAddOptionsController());
+//     var text = _postponedAddOptionsController.text;
+//
+//     return Row(
+//       children: [
+//         Expanded(
+//           child: Obx(
+//             () => TextFormField(
+//               controller: TextEditingController()..text = '$text',
+//               decoration: InputDecoration(
+//                 border: UnderlineInputBorder(),
+//                 labelText: 'Текст записи',
+//               ),
+//               onFieldSubmitted: (text) {
+//                 _textChange(text);
+//               },
+//               onTap: () {
+//                 print('tap');
+//               },
+//             ),
+//           ),
+//         )
+//       ],
+//     );
+//   }
+// }
 
 // class PostponedAddTextField extends StatefulWidget {
 //   @override

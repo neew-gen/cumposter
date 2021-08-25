@@ -11,6 +11,7 @@ class ImagesFromGalleryController extends GetxController {
 
   Future fetchImagesFromGallery() async {
     await Permission.manageExternalStorage.request();
+    await Permission.storage.request();
     var downloadsFolderPath = await ExtStorage.getExternalStoragePublicDirectory(ExtStorage.DIRECTORY_DOWNLOADS);
     var filesList = Directory(downloadsFolderPath!).listSync();
     var images = [];

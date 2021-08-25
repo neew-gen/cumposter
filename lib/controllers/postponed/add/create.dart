@@ -105,6 +105,7 @@ class PostponedCreateController extends GetxController {
     //     image.deleteSync();
     //   }
     // }
+    await Permission.storage.request();
     await Permission.manageExternalStorage.request();
     for (var image in imagesForUpload) {
       image.deleteSync();
