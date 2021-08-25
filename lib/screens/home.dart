@@ -21,7 +21,7 @@ class HomeScreen extends StatelessWidget {
 
     _goToManagedGroupsMenuScreen(groupInfo) {
       _currentGroupController.setCurrentGroup(groupInfo);
-      Get.to(ManagedGroupsMenuScreen());
+      Get.to(() => ManagedGroupsMenuScreen());
     }
 
     return Scaffold(

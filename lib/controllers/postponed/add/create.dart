@@ -6,7 +6,6 @@ import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:http_parser/http_parser.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:photo_manager/photo_manager.dart';
 import 'package:vk_group_admin/controllers/groups/current.dart';
 import 'package:vk_group_admin/controllers/images_from_gallery.dart';
 import 'package:vk_group_admin/controllers/postponed/add/time.dart';
@@ -18,7 +17,6 @@ import 'package:vk_group_admin/utilities/vk/post/wall_post.dart';
 import '../posts.dart';
 import 'options.dart';
 import 'package:mime/mime.dart';
-import 'package:path_provider_ex/path_provider_ex.dart';
 
 class PostponedCreateController extends GetxController {
   var canCreate = {}.obs;

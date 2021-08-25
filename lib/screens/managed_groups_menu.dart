@@ -6,7 +6,7 @@ class ManagedGroupsMenuScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Группы под вашим управлением'),
+          title: const Text('Меню группы'),
           automaticallyImplyLeading: false,
         ),
         body: Column(children: [

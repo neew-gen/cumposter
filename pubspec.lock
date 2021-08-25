@@ -53,9 +53,11 @@ packages:
   ext_storage:
     dependency: "direct main"
     description:
-      name: ext_storage
-      url: "https://pub.dartlang.org"
-    source: hosted
+      path: "."
+      ref: HEAD
+      resolved-ref: "98faf095ed6786a0bb0db26cb2f3966513f3f7aa"
+      url: "git://github.com/GitJournal/ext_storage.git"
+    source: git
     version: "1.0.3"
   fake_async:
     dependency: transitive
@@ -235,13 +237,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.6.1"
-  photo_manager:
-    dependency: "direct main"
-    description:
-      name: photo_manager
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.3.1"
   platform:
     dependency: transitive
     description:
