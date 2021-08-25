@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:vk_group_admin/components/postponed/add_screen/images.dart';
-import 'package:vk_group_admin/components/postponed/add_screen/panel.dart';
+import 'package:vk_group_admin/widgets/postponed/add_screen/images.dart';
+import 'package:vk_group_admin/widgets/postponed/add_screen/panel.dart';
 
 class PostponedAddScreen extends StatelessWidget {
   @override

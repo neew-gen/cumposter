@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:vk_group_admin/components/postponed/add_screen/delete_checkbox.dart';
-import 'package:vk_group_admin/components/postponed/add_screen/text_field.dart';
+import 'package:vk_group_admin/widgets/postponed/add_screen/delete_checkbox.dart';
+import 'package:vk_group_admin/widgets/postponed/add_screen/text_field.dart';
 
 import 'create_button.dart';
 import 'date_picker.dart';

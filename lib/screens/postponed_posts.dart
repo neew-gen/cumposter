@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vk_group_admin/components/postponed/post/post.dart';
+import 'package:vk_group_admin/widgets/postponed/post/post.dart';
 import 'package:vk_group_admin/controllers/groups/current.dart';
 import 'package:vk_group_admin/controllers/postponed/posts.dart';
 import 'package:vk_group_admin/screens/postponed_add.dart';
@@ -17,7 +17,7 @@ class PostponedPostsScreen extends StatelessWidget {
         .fetchPostponedPosts(_currentGroupController.currentGroup['id']);
 
     _goToPostponedAddScreen() {
-      Get.to(PostponedAddScreen());
+      Get.to(() => PostponedAddScreen());
     }
 
     return Scaffold(
@@ -31,6 +31,16 @@ class PostponedPostsScreen extends StatelessWidget {
           },
         ),
       ),
+
+      // body: Obx(
+      //   () => ListView.builder(
+      //     itemCount: _postponedPostsController.postponedPosts.length,
+      //     itemBuilder: (BuildContext context, int index) {
+      //       return PostponedPost(
+      //           _postponedPostsController.postponedPosts[index]);
+      //     },
+      //   ),
+      // ),
       floatingActionButton: TextButton(
         onPressed: () {
           _goToPostponedAddScreen();
