@@ -12,11 +12,6 @@ class PostponedAddScreenImageCheckbox extends StatefulWidget {
 }
 
 class _State extends State<PostponedAddScreenImageCheckbox> {
-  final PostponedAddOptionsController _postponedAddOptionsController =
-      Get.put(PostponedAddOptionsController());
-  final PostponedCreateController _postponedCreateController =
-      Get.put(PostponedCreateController());
-
   @override
   void initState() {
     super.initState();
@@ -29,16 +24,16 @@ class _State extends State<PostponedAddScreenImageCheckbox> {
 
   @override
   Widget build(BuildContext context) {
-    var _checkboxValue = _postponedAddOptionsController.imageCheckboxList[widget._index];
+    var _checkboxValue = PostponedAddOptionsController.to.imageCheckboxList[widget._index];
     return Checkbox(
       value: _checkboxValue,
       onChanged: (_) {
         _checkboxValue = !_checkboxValue;
         setState(() {
         });
-        _postponedAddOptionsController.updateImageCheckbox(
+        PostponedAddOptionsController.to.updateImageCheckbox(
             widget._index, _checkboxValue);
-        _postponedCreateController.fetchCanCreate();
+        PostponedCreateController.to.fetchCanCreate();
       },
     );
   }

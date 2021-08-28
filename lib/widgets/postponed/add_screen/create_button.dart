@@ -1,32 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:vk_group_admin/controllers/postponed/add/create.dart';
 import 'package:get/get.dart';
+import 'package:vk_group_admin/enums/post_enums.dart';
+import 'package:vk_group_admin/widgets/postponed/add_screen/posting_dialog.dart';
+import 'package:vk_group_admin/widgets/postponed/add_screen/status.dart';
 
-class PostponedAddScreenCreateButton extends StatelessWidget {
-  final PostponedCreateController _postponedCreateController =
-      Get.put(PostponedCreateController());
+import 'error_dialog.dart';
 
+class PostponedAddScreenCreateButton
+    extends GetWidget<PostponedCreateController> {
   _createPost() {
-    _postponedCreateController.savePost();
+    controller.savePost();
   }
 
-  _getStatusMessages(canCreate) {
-    if (!canCreate['canCreateStatus']) {
-      return Column(
-        children: [
-          for (var message in canCreate['messages'])
-            Text(
-              message,
-              style: TextStyle(
-                fontSize: 12.0,
-              ),
-            ),
-        ],
-      );
-    } else {
-      return Text('');
-    }
-  }
+  // _getStatusMessages(context, canCreate) {
+  //   if (!canCreate['canCreateStatus']) {
+  //     return Column(
+  //       children: [
+  //         for (var message in canCreate['messages'])
+  //           Text(
+  //             message,
+  //             style: TextStyle(
+  //               fontSize: 12.0,
+  //             ),
+  //           ),
+  //       ],
+  //     );
+  //   } else {
+  //     return Text('');
+  //   }
+  // }
 
   _getOnPressedMethod(canCreate) {
     var canCreateStatus = canCreate['canCreateStatus'];
@@ -39,15 +42,15 @@ class PostponedAddScreenCreateButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    _postponedCreateController.fetchCanCreate();
+    controller.fetchCanCreate();
+    // if ()
     return Obx(
       () => Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          _getStatusMessages(_postponedCreateController.canCreate),
+          PostponedAddScreenStatus(controller.canCreate),
           TextButton(
-            onPressed:
-                _getOnPressedMethod(_postponedCreateController.canCreate),
+            onPressed: _getOnPressedMethod(controller.canCreate),
             child: Text('Создать'),
           ),
         ],

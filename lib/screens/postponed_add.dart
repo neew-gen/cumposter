@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vk_group_admin/controllers/postponed/add/create.dart';
 import 'package:vk_group_admin/controllers/postponed/posts.dart';
+import 'package:vk_group_admin/enums/post_enums.dart';
+import 'package:vk_group_admin/widgets/postponed/add_screen/error_dialog.dart';
 import 'package:vk_group_admin/widgets/postponed/add_screen/images.dart';
 import 'package:vk_group_admin/widgets/postponed/add_screen/panel.dart';
+import 'package:vk_group_admin/widgets/postponed/add_screen/posting_dialog.dart';
 
-class PostponedAddScreen extends StatelessWidget {
+class PostponedAddScreen extends GetWidget<PostponedCreateController> {
   @override
   Widget build(BuildContext context) {
     final PostponedPostsController _postponedPostsController = Get.find();

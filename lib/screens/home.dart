@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:vk_group_admin/screens/auth.dart';
-import 'package:vk_group_admin/screens/managed_groups.dart';
-
-import 'package:flutter/material.dart';
 import 'package:vk_group_admin/controllers/groups/current.dart';
 import 'package:vk_group_admin/controllers/groups/managed.dart';
 import 'package:vk_group_admin/screens/managed_groups_menu.dart';
 import 'package:get/get.dart';
+import 'package:vk_group_admin/widgets/home/groups_list.dart';
+import 'package:vk_group_admin/widgets/home/options.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -26,19 +23,14 @@ class HomeScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Группы под вашим управлением'),
+        title: const Text('Главное меню'),
         automaticallyImplyLeading: false,
       ),
-      body: Obx(
-        () => Column(children: [
-          for (var managedGroup in _managedGroupsController.managedGroups)
-            ListTile(
-              title: Text(managedGroup["name"]),
-              onTap: () {
-                _goToManagedGroupsMenuScreen(managedGroup);
-              },
-            ),
-        ]),
+      body: Column(
+        children: [
+          HomeGroupsList(),
+          HomeOptions(),
+        ],
       ),
     );
   }

@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:vk_group_admin/controllers/postponed/add/create.dart';
+import 'package:vk_group_admin/enums/post_enums.dart';
 import 'package:vk_group_admin/widgets/postponed/add_screen/delete_checkbox.dart';
+import 'package:vk_group_admin/widgets/postponed/add_screen/error_dialog.dart';
+import 'package:vk_group_admin/widgets/postponed/add_screen/posting_dialog.dart';
 import 'package:vk_group_admin/widgets/postponed/add_screen/text_field.dart';
 
 import 'create_button.dart';
@@ -22,6 +26,9 @@ class PostponedAddScreenPanel extends StatelessWidget {
   _buildCreateButton() {
     return PostponedAddScreenCreateButton();
   }
+
+
+
 
   _buildColumnChildren() {
     List<Widget> widgets = [];
@@ -48,7 +55,8 @@ class PostponedAddScreenPanel extends StatelessWidget {
       color: Colors.white,
       child: Column(
         mainAxisSize: MainAxisSize.min,
-        children: _buildColumnChildren(),
+        children:
+        _buildColumnChildren(),
       ),
     );
   }

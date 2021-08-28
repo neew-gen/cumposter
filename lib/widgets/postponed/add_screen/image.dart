@@ -6,26 +6,39 @@ import 'package:get/get.dart';
 
 import 'image_checkbox.dart';
 
-class PostponedAddScreenImage extends StatelessWidget {
+class PostponedAddScreenImage extends GetWidget<ImagesFromGalleryController> {
   final _index;
   PostponedAddScreenImage(this._index);
 
   @override
   Widget build(BuildContext context) {
-    final ImagesFromGalleryController _imagesFromGalleryController = Get.find();
-    final PostponedAddOptionsController _postponedAddOptionsController =
-        Get.put(PostponedAddOptionsController());
-    _postponedAddOptionsController.fetchImageCheckboxList();
-    return Stack(alignment: Alignment.bottomCenter, children: <Widget>[
-      Image.file(_imagesFromGalleryController.imageList[_index]),
-      Align(
-        alignment: Alignment.topRight,
-        child: Padding(
-          padding: EdgeInsets.all(8.0),
-          child: PostponedAddScreenImageCheckbox(_index),
+    PostponedAddOptionsController.to.fetchImageCheckboxList();
+    // return GetBuilder<ImagesFromGalleryController>(
+    //   // init: ImagesFromGalleryController(),
+    //   builder: (value) =>
+    //       Stack(alignment: Alignment.bottomCenter, children: <Widget>[
+    //     Image.file(ImagesFromGalleryController.to.imageList[_index]),
+    //     Align(
+    //       alignment: Alignment.topRight,
+    //       child: Padding(
+    //         padding: EdgeInsets.all(8.0),
+    //         child: PostponedAddScreenImageCheckbox(_index),
+    //       ),
+    //     ),
+    //   ]),
+    // );
+    return Obx(
+      () => Stack(alignment: Alignment.bottomCenter, children: <Widget>[
+        Image.file(controller.imageList[_index]),
+        Align(
+          alignment: Alignment.topRight,
+          child: Padding(
+            padding: EdgeInsets.all(8.0),
+            child: PostponedAddScreenImageCheckbox(_index),
+          ),
         ),
-      ),
-    ]);
+      ]),
+    );
   }
 }
 

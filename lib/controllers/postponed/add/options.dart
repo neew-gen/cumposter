@@ -3,11 +3,10 @@ import 'package:get/get.dart';
 import '../../images_from_gallery.dart';
 
 class PostponedAddOptionsController extends GetxController {
+  static PostponedAddOptionsController get to => Get.find();
   var imageCheckboxList = [].obs;
   void fetchImageCheckboxList() {
-    final ImagesFromGalleryController _imagesFromGalleryController = Get.find();
-
-    var imageList = _imagesFromGalleryController.imageList;
+    var imageList = ImagesFromGalleryController.to.imageList;
     List<bool> checkBoxList = [];
     for (int i = 0; i < imageList.length; i++) {
       checkBoxList.add(false);

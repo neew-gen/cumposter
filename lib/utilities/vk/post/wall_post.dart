@@ -11,5 +11,18 @@ wallPost(groupId, text, attachments, signed, postTime) async {
       'publish_date=$postTime&'
       'access_token=$token&v=5.131'));
   var decodedBody = jsonDecode(res.body);
-  return decodedBody['response'];
+  var error = decodedBody['error'];
+  if (error != null) {
+    if (error['error_code'] == 214) {
+      return {
+        'success': false,
+        'errorCode': 214,
+      };
+    }
+  } else {
+    return {
+      'success': true,
+      'errorCode': null,
+    };
+  }
 }

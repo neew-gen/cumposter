@@ -4,8 +4,11 @@ import 'package:vk_group_admin/utilities/vk/get/get_postponed_posts.dart';
 import 'package:vk_group_admin/utilities/vk/get/get_users.dart';
 
 class PostponedPostsController extends GetxController {
+  static PostponedPostsController get to => Get.find();
+
   var postponedPosts = [].obs;
   var postponedPostsAuthors = [].obs;
+
 
   Future fetchPostponedPosts(groupId) async {
     var fetchedPostponedPosts = await getPostponedPosts(groupId.toString());
