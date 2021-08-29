@@ -9,6 +9,7 @@ import 'package:http_parser/http_parser.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:vk_group_admin/controllers/groups/current.dart';
 import 'package:vk_group_admin/controllers/images_from_gallery.dart';
+import 'package:vk_group_admin/controllers/options/debug.dart';
 import 'package:vk_group_admin/controllers/postponed/add/time.dart';
 import 'package:vk_group_admin/enums/post_enums.dart';
 import 'package:vk_group_admin/utilities/date/unix_time.dart';
@@ -105,9 +106,15 @@ class PostponedCreateController extends GetxController {
       postingStatus.value = PostingStatus.finished;
       fetchCanCreate();
       Timer(Duration(seconds: 1), () async {
-        await Permission.manageExternalStorage.request();
-        for (var image in imagesForUpload) {
-          image.deleteSync();
+        try {
+
+          await Permission.storage.request();
+          await Permission.manageExternalStorage.request();
+          for (var image in imagesForUpload) {
+            await image.delete();
+          }
+        } catch (e) {
+          DebugController.to.updateDebugErrors(e, 'PostponedCreateController');
         }
 
         await PostponedPostsController.to.fetchPostponedPosts(currentGroupId);

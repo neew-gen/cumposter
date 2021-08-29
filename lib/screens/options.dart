@@ -9,10 +9,10 @@ class OptionsScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Настройки приложения'),
       ),
-      body: Column(
+      body: ListView(
         children: [
           DebugConsole(),
-          // DebugErrors(),
+          DebugErrors(),
         ],
       ),
     );

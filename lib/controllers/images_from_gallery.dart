@@ -26,7 +26,7 @@ class ImagesFromGalleryController extends GetxController {
       DebugController.to.updateDebugConsole(downloadsFolderPath, 'ImagesFromGalleryController');
 
       var filesList = Directory(downloadsFolderPath!).listSync();
-      DebugController.to.updateDebugConsole(filesList, 'ImagesFromGalleryController');
+      DebugController.to.updateDebugConsole(filesList.length, 'ImagesFromGalleryController');
 
       // var images = [];
       // DebugController.to.updateDebugConsole(images, 'ImagesFromGalleryController');
