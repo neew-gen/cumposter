@@ -116,20 +116,20 @@ class PostponedPost extends StatelessWidget {
 //     List<Widget> widgets = [];
 //
 //     // Widget listTile = _buildListTile();
-//     // widgets.add_screen(listTile);
+//     // widgets.create(listTile);
 //     //
 //     // Widget container = _buildContainer();
-//     // widgets.add_screen(container);
+//     // widgets.create(container);
 //     //
 //     // Widget? postAttachments = _buildPostAttachments();
-//     // widgets.add_screen(postAttachments);
+//     // widgets.create(postAttachments);
 //     var listTile = _buildListTile();
-//     widgets.add_screen(listTile);
+//     widgets.create(listTile);
 //     var container = _buildContainer();
-//     widgets.add_screen(container);
+//     widgets.create(container);
 //     var postAttachments = _buildPostAttachments();
 //     if (postAttachments != null) {
-//       widgets.add_screen(postAttachments);
+//       widgets.create(postAttachments);
 //     }
 //     return widgets;
 //   }

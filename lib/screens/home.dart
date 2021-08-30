@@ -147,7 +147,7 @@ class HomeScreen extends StatelessWidget {
 //       floatingActionButton: FloatingActionButton(
 //         onPressed: _incrementCounter,
 //         tooltip: 'Increment',
-//         child: Icon(Icons.add_screen),
+//         child: Icon(Icons.create),
 //       ), // This trailing comma makes auto-formatting nicer for build methods.
 //     );
 //   }

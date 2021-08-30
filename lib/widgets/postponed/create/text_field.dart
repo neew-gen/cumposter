@@ -1,25 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:vk_group_admin/controllers/postponed/add/create.dart';
-import 'package:vk_group_admin/controllers/postponed/add/options.dart';
+import 'package:vk_group_admin/controllers/postponed/create/create.dart';
+import 'package:vk_group_admin/controllers/postponed/create/options.dart';
 
-import 'package:flutter/material.dart';
-import 'package:vk_group_admin/controllers/postponed/add/create.dart';
-import 'package:vk_group_admin/controllers/postponed/add/options.dart';
-import 'package:get/get.dart';
-
-class PostponedAddScreenTextField extends StatefulWidget {
+class PostponedCreatePanelTextField extends StatefulWidget {
   @override
   _State createState() => _State();
 }
 
-class _State extends State<PostponedAddScreenTextField> {
-  final PostponedAddOptionsController _postponedAddTimeController =
-      Get.put(PostponedAddOptionsController());
+class _State extends State<PostponedCreatePanelTextField> {
+  final PostponedCreateOptionsController _postponedAddTimeController =
+      Get.put(PostponedCreateOptionsController());
   final PostponedCreateController _postponedCreateController =
       Get.put(PostponedCreateController());
-  final PostponedAddOptionsController _postponedAddOptionsController =
-      Get.put(PostponedAddOptionsController());
+  final PostponedCreateOptionsController _postponedAddOptionsController =
+      Get.put(PostponedCreateOptionsController());
   final _controller = TextEditingController();
 
   final _focusNode = FocusNode();
@@ -40,8 +35,8 @@ class _State extends State<PostponedAddScreenTextField> {
 
   @override
   Widget build(BuildContext context) {
-    final PostponedAddOptionsController _postponedAddOptionsController =
-        Get.put(PostponedAddOptionsController());
+    final PostponedCreateOptionsController _postponedAddOptionsController =
+        Get.put(PostponedCreateOptionsController());
 
     var text = _postponedAddOptionsController.text;
     _textChange(text) {

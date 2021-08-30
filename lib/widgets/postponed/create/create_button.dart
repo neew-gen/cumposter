@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:vk_group_admin/controllers/postponed/add/create.dart';
 import 'package:get/get.dart';
-import 'package:vk_group_admin/enums/post_enums.dart';
-import 'package:vk_group_admin/widgets/postponed/add_screen/posting_dialog.dart';
-import 'package:vk_group_admin/widgets/postponed/add_screen/status.dart';
+import 'package:vk_group_admin/controllers/postponed/create/create.dart';
+import 'package:vk_group_admin/widgets/postponed/create/status.dart';
 
-import 'error_dialog.dart';
-
-class PostponedAddScreenCreateButton
+class PostponedCreatePanelCreateButton
     extends GetWidget<PostponedCreateController> {
   _createPost() {
     controller.savePost();
@@ -48,7 +44,7 @@ class PostponedAddScreenCreateButton
       () => Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          PostponedAddScreenStatus(controller.canCreate),
+          PostponedCreatePanelStatus(controller.canCreate),
           TextButton(
             onPressed: _getOnPressedMethod(controller.canCreate),
             child: Text('Создать'),

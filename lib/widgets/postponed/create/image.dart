@@ -1,18 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:vk_group_admin/controllers/images_from_gallery.dart';
-import 'package:vk_group_admin/controllers/postponed/add/create.dart';
-import 'package:vk_group_admin/controllers/postponed/add/options.dart';
-import 'package:get/get.dart';
 
 import 'image_checkbox.dart';
 
-class PostponedAddScreenImage extends GetWidget<ImagesFromGalleryController> {
-  final _index;
-  PostponedAddScreenImage(this._index);
+class PostponedAddScreenImage extends StatelessWidget {
+  final _imageObject;
+  PostponedAddScreenImage(this._imageObject);
 
   @override
   Widget build(BuildContext context) {
-    PostponedAddOptionsController.to.fetchImageCheckboxList();
     // return GetBuilder<ImagesFromGalleryController>(
     //   // init: ImagesFromGalleryController(),
     //   builder: (value) =>
@@ -27,18 +22,41 @@ class PostponedAddScreenImage extends GetWidget<ImagesFromGalleryController> {
     //     ),
     //   ]),
     // );
-    return Obx(
-      () => Stack(alignment: Alignment.bottomCenter, children: <Widget>[
-        Image.file(controller.imageList[_index]),
-        Align(
-          alignment: Alignment.topRight,
-          child: Padding(
-            padding: EdgeInsets.all(8.0),
-            child: PostponedAddScreenImageCheckbox(_index),
+    return Stack(alignment: Alignment.bottomCenter, children: <Widget>[
+      Image.file(
+        _imageObject.imageFile,
+      ),
+      // Obx(
+      //   () => Image.file(
+      //     ImagesFromGalleryController.to.imageList[_index],
+      //   ),
+      // ),
+      Align(
+        alignment: Alignment.topRight,
+        child: Padding(
+          padding: EdgeInsets.all(8.0),
+          child: PostponedAddScreenImageCheckbox(
+            _imageObject.id,
+            _imageObject.isChecked,
           ),
         ),
-      ]),
-    );
+      ),
+    ]);
+    // return Obx(
+    //   () => Stack(alignment: Alignment.bottomCenter, children: <Widget>[
+    //     Image.file(ImagesFromGalleryController.to.imageList[_index]),
+    //     Align(
+    //       alignment: Alignment.topRight,
+    //       child: Padding(
+    //         padding: EdgeInsets.all(8.0),
+    //         child: PostponedAddScreenImageCheckbox(
+    //           _index,
+    //           PostponedAddOptionsController.to.imageCheckboxList[_index],
+    //         ),
+    //       ),
+    //     ),
+    //   ]),
+    // );
   }
 }
 

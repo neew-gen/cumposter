@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:vk_group_admin/controllers/postponed/add/create.dart';
+import 'package:vk_group_admin/controllers/postponed/create/create.dart';
 import 'package:vk_group_admin/controllers/postponed/posts.dart';
-import 'package:vk_group_admin/enums/post_enums.dart';
-import 'package:vk_group_admin/widgets/postponed/add_screen/error_dialog.dart';
-import 'package:vk_group_admin/widgets/postponed/add_screen/images.dart';
-import 'package:vk_group_admin/widgets/postponed/add_screen/panel.dart';
-import 'package:vk_group_admin/widgets/postponed/add_screen/posting_dialog.dart';
+import 'package:vk_group_admin/widgets/postponed/create/images.dart';
+import 'package:vk_group_admin/widgets/postponed/create/panel.dart';
 
-class PostponedAddScreen extends GetWidget<PostponedCreateController> {
+class PostponedCreateScreen extends GetWidget<PostponedCreateController> {
   @override
   Widget build(BuildContext context) {
     final PostponedPostsController _postponedPostsController = Get.find();
@@ -23,9 +20,9 @@ class PostponedAddScreen extends GetWidget<PostponedCreateController> {
           () => _buildAppBar(_postponedPostsController.postponedPosts.length),
         ),
       ),
-      body: PostponedAddScreenImages(),
+      body: PostponedCreateScreenImages(),
       bottomNavigationBar: StickyBottomAppBar(
-        child: PostponedAddScreenPanel(),
+        child: PostponedCreateScreenPanel(),
       ),
     );
   }

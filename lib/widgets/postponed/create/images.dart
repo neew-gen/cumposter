@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:vk_group_admin/controllers/images_from_gallery.dart';
 import 'package:get/get.dart';
-import 'package:vk_group_admin/controllers/options/debug.dart';
+import 'package:vk_group_admin/controllers/postponed/create/images.dart';
 
 import 'image.dart';
 
-class PostponedAddScreenImages extends StatelessWidget {
+class PostponedCreateScreenImages extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    ImagesFromGalleryController.to.fetchImagesFromGallery();
+    PostponedCreateImagesController.to.fetchImagesFromGallery();
     // final ImagesFromGalleryController _imagesFromGalleryController =
     //     Get.put(ImagesFromGalleryController());
     //
@@ -51,11 +50,9 @@ class PostponedAddScreenImages extends StatelessWidget {
             childAspectRatio: (2 / 2),
           ),
           children: [
-            for (int i = 0;
-                i < ImagesFromGalleryController.to.imageList.length;
-                i++)
+            for (var image in PostponedCreateImagesController.to.imagesList)
               PostponedAddScreenImage(
-                i,
+                image,
               ),
           ],
         ));

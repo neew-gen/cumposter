@@ -1,30 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:vk_group_admin/controllers/postponed/add/create.dart';
-import 'package:vk_group_admin/enums/post_enums.dart';
-import 'package:vk_group_admin/widgets/postponed/add_screen/delete_checkbox.dart';
-import 'package:vk_group_admin/widgets/postponed/add_screen/error_dialog.dart';
-import 'package:vk_group_admin/widgets/postponed/add_screen/posting_dialog.dart';
-import 'package:vk_group_admin/widgets/postponed/add_screen/text_field.dart';
+import 'package:vk_group_admin/widgets/postponed/create/text_field.dart';
 
 import 'create_button.dart';
 import 'date_picker.dart';
-import 'package:get/get.dart';
 
-class PostponedAddScreenPanel extends StatelessWidget {
+class PostponedCreateScreenPanel extends StatelessWidget {
   // _buildDeleteCheckbox() {
   //   return PostponedAddDeleteCheckbox();
   // }
 
   _buildTextField() {
-    return PostponedAddScreenTextField();
+    return PostponedCreatePanelTextField();
   }
 
   _buildDatePicker() {
-    return PostponedAddScreenDatePicker();
+    return PostponedCreatePanelDatePicker();
   }
 
   _buildCreateButton() {
-    return PostponedAddScreenCreateButton();
+    return PostponedCreatePanelCreateButton();
   }
 
 
@@ -34,7 +28,7 @@ class PostponedAddScreenPanel extends StatelessWidget {
     List<Widget> widgets = [];
 
     // var deleteCheckbox = _buildDeleteCheckbox();
-    // widgets.add(deleteCheckbox);
+    // widgets.create(deleteCheckbox);
 
     var textField = _buildTextField();
     widgets.add(textField);

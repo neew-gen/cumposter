@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:vk_group_admin/controllers/postponed/add/create.dart';
-import 'package:vk_group_admin/controllers/postponed/add/time.dart';
 import 'package:get/get.dart';
+import 'package:vk_group_admin/controllers/postponed/create/create.dart';
+import 'package:vk_group_admin/controllers/postponed/create/time.dart';
 
-class PostponedAddScreenDatePicker extends StatelessWidget {
+class PostponedCreatePanelDatePicker extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final PostponedAddTimeController _postponedAddTimeController =
-        Get.put(PostponedAddTimeController());
+    final PostponedCreateTimeController _postponedAddTimeController =
+        Get.put(PostponedCreateTimeController());
     final PostponedCreateController _postponedCreateController =
         Get.put(PostponedCreateController());
 

@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
 import 'package:vk_group_admin/controllers/postponed/posts.dart';
 
-class PostponedAddTimeController extends GetxController {
-  static PostponedAddTimeController get to => Get.find();
+class PostponedCreateTimeController extends GetxController {
+  static PostponedCreateTimeController get to => Get.find();
 
   final Map<String, int> _startTime = {
     'hour': 6,

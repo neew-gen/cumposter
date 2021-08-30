@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:vk_group_admin/widgets/postponed/post/post.dart';
 import 'package:vk_group_admin/controllers/groups/current.dart';
 import 'package:vk_group_admin/controllers/postponed/posts.dart';
-import 'package:vk_group_admin/screens/postponed_add.dart';
+import 'package:vk_group_admin/screens/postponed_create.dart';
 import 'package:get/get.dart';
 
 class PostponedPostsScreen extends StatelessWidget {
@@ -17,7 +17,7 @@ class PostponedPostsScreen extends StatelessWidget {
         .fetchPostponedPosts(_currentGroupController.currentGroup['id']);
 
     _goToPostponedAddScreen() {
-      Get.to(() => PostponedAddScreen());
+      Get.to(() => PostponedCreateScreen());
     }
 
     _buildAppBar(postsLength) {
