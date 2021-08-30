@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:vk_group_admin/controllers/welcome.dart';
 
 class WelcomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final WelcomeController _managedGroupsController =
-        Get.put(WelcomeController());
-
-    _managedGroupsController.checkCredentials();
+    WelcomeController.to.checkCredentials();
 
     return Scaffold(
       body: Center(

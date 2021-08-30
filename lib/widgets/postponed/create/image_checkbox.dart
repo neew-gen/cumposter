@@ -37,6 +37,12 @@ class _State extends State<PostponedAddScreenImageCheckbox> {
   }
 
   @override
+  void didUpdateWidget(oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    _checkboxValue = widget._checkboxValue;
+  }
+
+  @override
   void dispose() {
     super.dispose();
   }

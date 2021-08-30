@@ -11,7 +11,7 @@ import '../../options/debug.dart';
 
 class PostponedCreateImagesController extends GetxController {
   static PostponedCreateImagesController get to => Get.find();
-  RxList imagesList = [].obs;
+  RxList<PostponedCreateImage> imagesList = <PostponedCreateImage>[].obs;
 
   Future fetchImagesFromGallery() async {
     try {
@@ -26,10 +26,10 @@ class PostponedCreateImagesController extends GetxController {
 
       List<FileSystemEntity> allDownloadsFiles =
           Directory(downloadsFolderPath!).listSync();
-      List<FileSystemEntity> imagesFiles = [];
+      List<File> imagesFiles = [];
       for (var file in allDownloadsFiles) {
         if (isImage(file.path)) {
-          imagesFiles.add(file);
+          imagesFiles.add(file as File);
         }
       }
       // сортировка по убыванию

@@ -13,8 +13,8 @@ class HomeGroupMenu extends StatelessWidget {
   HomeGroupMenu(this._group);
   @override
   Widget build(context) {
-    final CurrentGroupController _currentGroupController =
-        Get.put(CurrentGroupController());
+    // final CurrentGroupController _currentGroupController =
+    //     Get.put(CurrentGroupController());
     //
     // _goToManagedGroupsMenuScreen(groupInfo) {
     //   _currentGroupController.setCurrentGroup(groupInfo);
@@ -22,7 +22,7 @@ class HomeGroupMenu extends StatelessWidget {
     // }
     _goToNextPage(nextPage) {
       if (nextPage == NextPage.postponed) {
-        _currentGroupController.setCurrentGroup(_group);
+        CurrentGroupController.to.setCurrentGroup(_group);
         Get.to(() => PostponedPostsScreen());
       }
     }

@@ -49,12 +49,10 @@ class PostponedCreateTimeController extends GetxController {
           dateRangeString.value = 'Через $dayRange дня(ей)';
         }
       } else {
-        int monthRange = nextPostTime['month']! - now.month;
-        dateRangeString.value = 'Через $monthRange месяца(ов)';
+        dateRangeString.value = '';
       }
     } else {
-      int yearRange = nextPostTime['year']! - now.year;
-      dateRangeString.value = 'Через $yearRange год(а)';
+      dateRangeString.value = '';
     }
   }
 

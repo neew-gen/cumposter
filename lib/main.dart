@@ -2,10 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vk_group_admin/screens/welcome.dart';
 
+import 'controllers/groups/current.dart';
+import 'controllers/groups/managed.dart';
 import 'controllers/options/debug.dart';
 import 'controllers/postponed/create/create.dart';
 import 'controllers/postponed/create/images.dart';
+import 'controllers/postponed/create/time.dart';
 import 'controllers/postponed/posts.dart';
+import 'controllers/welcome.dart';
 
 void main() {
   runApp(App());
@@ -46,13 +50,17 @@ class App extends StatelessWidget {
 class InitialBinding implements Bindings {
   @override
   void dependencies() {
-    // Get.create<DebugController>(() => DebugController());
+    Get.put<WelcomeController>(WelcomeController(), permanent: true);
+    Get.put<ManagedGroupsController>(ManagedGroupsController(), permanent: true);
+    Get.put<PostponedPostsController>(PostponedPostsController(),
+        permanent: true);
     Get.put<DebugController>(DebugController(), permanent: true);
-    Get.put<PostponedCreateImagesController>(PostponedCreateImagesController(), permanent: true);
-    Get.put<PostponedCreateController>(PostponedCreateController(), permanent: true);
-    Get.put<PostponedAddTimeController>(PostponedAddTimeController(), permanent: true);
+    Get.put<PostponedCreateImagesController>(PostponedCreateImagesController(),
+        permanent: true);
+    Get.put<PostponedCreateController>(PostponedCreateController(),
+        permanent: true);
+    Get.put<PostponedCreateTimeController>(PostponedCreateTimeController(),
+        permanent: true);
+    Get.put<CurrentGroupController>(CurrentGroupController(), permanent: true);
   }
-}
-
-class PostponedAddTimeController {
 }

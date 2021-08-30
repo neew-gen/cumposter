@@ -10,6 +10,7 @@ import 'package:vk_group_admin/controllers/groups/current.dart';
 import 'package:vk_group_admin/controllers/options/debug.dart';
 import 'package:vk_group_admin/controllers/postponed/create/time.dart';
 import 'package:vk_group_admin/enums/post_enums.dart';
+import 'package:vk_group_admin/models/postponed/postponed_create_models.dart';
 import 'package:vk_group_admin/utilities/date/unix_time.dart';
 import 'package:http/http.dart' as http;
 import 'package:vk_group_admin/utilities/vk/get/get_wall_upload_server.dart';
@@ -59,12 +60,22 @@ class PostponedCreateController extends GetxController {
           nextPostTime['minute']);
       if (nextPostDateTime.isBefore(now)) {
         statusMessages.add('Некорректная дата');
+        canCreate.value = {
+          'canCreateStatus': false,
+          'messages': statusMessages
+        };
+        return;
       }
 
       var postsWithNextPostTime = postponedPosts.where((post) =>
           mapEquals(formatTimeFromUnixToMapType(post['date']), nextPostTime));
       if (postsWithNextPostTime.isNotEmpty) {
         statusMessages.add('На эту дату уже запланирована запись');
+        canCreate.value = {
+          'canCreateStatus': false,
+          'messages': statusMessages
+        };
+        return;
       }
 
       var text = PostponedCreateOptionsController.to.text.value;
@@ -83,13 +94,6 @@ class PostponedCreateController extends GetxController {
   }
 
   void savePost() async {
-    // final CurrentGroupController _currentGroupController = Get.find();
-    // final PostponedAddOptionsController _postponedAddOptionsController =
-    //     Get.find();
-    // final PostponedAddTimeController _postponedAddTimeController = Get.find();
-    // final PostponedPostsController _postponedPostsController = Get.find();
-    // final ImagesFromGalleryController _imagesFromGalleryController = Get.find();
-    //
     postingStatus.value = PostingStatus.inProgress;
     fetchCanCreate();
     var currentGroupId = CurrentGroupController.to.currentGroup['id'];
@@ -104,17 +108,17 @@ class PostponedCreateController extends GetxController {
     } else {
       postingStatus.value = PostingStatus.finished;
       fetchCanCreate();
-      Timer(Duration(seconds: 1), () async {
-        try {
-          await Permission.storage.request();
-          await Permission.manageExternalStorage.request();
-          for (var image in imagesForUpload) {
-            await image.delete();
-          }
-        } catch (e) {
-          DebugController.to.updateDebugErrors(e, 'PostponedCreateController');
+      try {
+        await Permission.storage.request();
+        await Permission.manageExternalStorage.request();
+        for (var image in imagesForUpload) {
+          await image.imageFile.delete();
         }
+      } catch (e) {
+        DebugController.to.updateDebugErrors(e, 'PostponedCreateController');
+      }
 
+      Timer(Duration(seconds: 1), () async {
         await PostponedPostsController.to.fetchPostponedPosts(currentGroupId);
         PostponedCreateTimeController.to.fetchNextPostTime();
         PostponedCreateTimeController.to.fetchDateRangeString();
@@ -174,11 +178,13 @@ _getUploadedImages(currentGroupId, imagesForUpload) async {
   return uploadedImageList;
 }
 
-_getImagesForUpload() async {
-  var images = PostponedCreateImagesController.to.imagesList;
-  print(images);
-  var selectedImages =
+Future<List<PostponedCreateImage>> _getImagesForUpload() async {
+  List<PostponedCreateImage> images = PostponedCreateImagesController
+      .to.imagesList;
+
+  List<PostponedCreateImage> selectedImages =
       images.where((image) => image.isChecked == true).toList();
+
   return selectedImages;
 }
 
