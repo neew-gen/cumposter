@@ -21,43 +21,48 @@ class PostponedCreateImagesController extends GetxController {
       String? downloadsFolderPath =
           await ExtStorage.getExternalStoragePublicDirectory(
               ExtStorage.DIRECTORY_DOWNLOADS);
-      DebugController.to.updateDebugConsole(
-          downloadsFolderPath, 'ImagesFromGalleryController');
+      // DebugController.to
+      //     .updateDebugConsole(downloadsFolderPath, 'downloadsFolderPath');
 
-      List<FileSystemEntity> allDownloadsFiles =
-          Directory(downloadsFolderPath!).listSync();
-      List<File> imagesFiles = [];
-      for (var file in allDownloadsFiles) {
-        if (isImage(file.path)) {
-          imagesFiles.add(file as File);
+      if (downloadsFolderPath != null) {
+        List<FileSystemEntity> allDownloadsFiles =
+            Directory(downloadsFolderPath).listSync();
+        List<File> imagesFiles = [];
+        for (var file in allDownloadsFiles) {
+          if (isImage(file.path)) {
+            imagesFiles.add(file as File);
+          }
         }
-      }
-      // сортировка по убыванию
-      imagesFiles
-          .sort((a, b) => b.statSync().changed.compareTo(a.statSync().changed));
+        // сортировка по убыванию
+        imagesFiles.sort(
+            (a, b) => b.statSync().changed.compareTo(a.statSync().changed));
 
-      List<PostponedCreateImage> postponedCreateImages = [];
-      for (int i = 0; i < imagesFiles.length; i++) {
-        var uuid = Uuid();
-        PostponedCreateImage postponedCreateImage = PostponedCreateImage(uuid.v4(), imagesFiles[i], false);
-        postponedCreateImages.add(postponedCreateImage);
+        List<PostponedCreateImage> postponedCreateImages = [];
+        for (int i = 0; i < imagesFiles.length; i++) {
+          var uuid = Uuid();
+          PostponedCreateImage postponedCreateImage =
+              PostponedCreateImage(uuid.v4(), imagesFiles[i], false);
+          postponedCreateImages.add(postponedCreateImage);
+        }
+        imagesList.value = postponedCreateImages;
       }
-      DebugController.to
-          .updateDebugConsole(postponedCreateImages.length, 'ImagesFromGalleryController');
-      imagesList.value = postponedCreateImages;
     } catch (e) {
       DebugController.to.updateDebugErrors(e, 'ImagesFromGalleryController');
     }
   }
 
   void updateImageCheckbox(id, value) {
-    var imageForUpdate = imagesList.where((image) => image.id == id).toList()[0];
-    imageForUpdate.isChecked= value;
+    var imageForUpdate =
+        imagesList.where((image) => image.id == id).toList()[0];
+    imageForUpdate.isChecked = value;
   }
 }
 
 bool isImage(String path) {
   final mimeType = lookupMimeType(path);
-
-  return mimeType!.startsWith('image/');
+  if (mimeType == null) {
+    return false;
+  } else {
+    return mimeType.startsWith('image/');
+  }
 }
