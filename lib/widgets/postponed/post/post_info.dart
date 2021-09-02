@@ -40,10 +40,10 @@ class PostInfo extends StatelessWidget {
       } else if (dateMap['day'] - nowDay == 2) {
         dateString = 'Послезавтра';
       } else {
-        dateString = '$nowDay/$nowMonth/$nowDay';
+        dateString = '${dateMap['day']}/${dateMap['month']}/${dateMap['year']}';
       }
     } else {
-      dateString = '$nowDay/$nowMonth/$nowDay';
+      dateString = '${dateMap['day']}/${dateMap['month']}/${dateMap['year']}';
     }
 
     var hour = dateMap['hour'];
