@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:vk_group_admin/controllers/groups/current.dart';
 import 'package:vk_group_admin/utilities/vk/delete/delete_postponed_post.dart';
 import 'package:vk_group_admin/utilities/vk/get/get_postponed_posts.dart';
 import 'package:vk_group_admin/utilities/vk/get/get_users.dart';
@@ -9,18 +10,19 @@ class PostponedPostsController extends GetxController {
   var postponedPosts = [].obs;
   var postponedPostsAuthors = [].obs;
 
-
-  Future fetchPostponedPosts(groupId) async {
+  Future fetchPostponedPosts() async {
+    String groupId = CurrentGroupController.to.currentGroup.value.id;
     var fetchedPostponedPosts = await getPostponedPosts(groupId.toString());
     postponedPosts.value = fetchedPostponedPosts;
     _fetchPostponedPostsAuthors(fetchedPostponedPosts);
   }
 
-  void deletePost(groupId, postId) async {
+  void deletePost(postId) async {
+    var groupId = CurrentGroupController.to.currentGroup.value.id;
     var resultOfDelete =
         await deletePostponedPost(groupId.toString(), postId.toString());
     if (resultOfDelete != null) {
-      fetchPostponedPosts(groupId);
+      fetchPostponedPosts();
     }
   }
 

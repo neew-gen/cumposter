@@ -10,7 +10,7 @@ import 'package:vk_group_admin/controllers/groups/current.dart';
 import 'package:vk_group_admin/controllers/options/debug.dart';
 import 'package:vk_group_admin/controllers/postponed/create/time.dart';
 import 'package:vk_group_admin/enums/post_enums.dart';
-import 'package:vk_group_admin/models/postponed/postponed_create_models.dart';
+import 'package:vk_group_admin/models/images_model.dart';
 import 'package:vk_group_admin/utilities/date/unix_time.dart';
 import 'package:http/http.dart' as http;
 import 'package:vk_group_admin/utilities/vk/get/get_wall_upload_server.dart';
@@ -96,7 +96,7 @@ class PostponedCreateController extends GetxController {
   void savePost() async {
     postingStatus.value = PostingStatus.inProgress;
     fetchCanCreate();
-    var currentGroupId = CurrentGroupController.to.currentGroup['id'];
+    var currentGroupId = CurrentGroupController.to.currentGroup.value.id;
     var imagesForUpload = await _getImagesForUpload();
     var uploadedImageList =
         await _getUploadedImages(currentGroupId, imagesForUpload);
@@ -115,11 +115,11 @@ class PostponedCreateController extends GetxController {
           await image.imageFile.delete();
         }
       } catch (e) {
-        DebugController.to.updateDebugErrors(e, 'PostponedCreateController');
+        DebugController.to.updateDebugErrors(e);
       }
 
       Timer(Duration(seconds: 1), () async {
-        await PostponedPostsController.to.fetchPostponedPosts(currentGroupId);
+        await PostponedPostsController.to.fetchPostponedPosts();
         PostponedCreateTimeController.to.fetchNextPostTime();
         PostponedCreateTimeController.to.fetchDateRangeString();
         await PostponedCreateImagesController.to.fetchImagesFromGallery();
@@ -178,11 +178,10 @@ _getUploadedImages(currentGroupId, imagesForUpload) async {
   return uploadedImageList;
 }
 
-Future<List<PostponedCreateImage>> _getImagesForUpload() async {
-  List<PostponedCreateImage> images = PostponedCreateImagesController
-      .to.imagesList;
+Future<List<ImageFromGallery>> _getImagesForUpload() async {
+  List<ImageFromGallery> images = PostponedCreateImagesController.to.imagesList;
 
-  List<PostponedCreateImage> selectedImages =
+  List<ImageFromGallery> selectedImages =
       images.where((image) => image.isChecked == true).toList();
 
   return selectedImages;

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "285183657964",
+    "project_id": "cumposter-42dc4",
+    "storage_bucket": "cumposter-42dc4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:285183657964:android:5ade64bc7a68f652ace2c9",
+        "android_client_info": {
+          "package_name": "com.genatre.cumposter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "285183657964-jilf4dvdghbrl7polhp2id1bbqdg068j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBRUYtPHUePoEY91e36O1s-NDxXxVq-jhk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "285183657964-jilf4dvdghbrl7polhp2id1bbqdg068j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

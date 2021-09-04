@@ -19,12 +19,9 @@ class PostponedCreateTimeController extends GetxController {
 
   var nextPostTime = {}.obs;
   void fetchNextPostTime() {
-    final PostponedPostsController _postponedPostsController =
-        Get.put(PostponedPostsController());
-
-    var _postponedPosts = _postponedPostsController.postponedPosts;
+    var postponedPosts = PostponedPostsController.to.postponedPosts;
     var nextPostTimeInMs =
-        _getNextPostTimeInMs(_postponedPosts, _startTime, _endTime, _step);
+        _getNextPostTimeInMs(postponedPosts, _startTime, _endTime, _step);
     nextPostTime.value = _formatNextPostTime(
         DateTime.fromMillisecondsSinceEpoch(nextPostTimeInMs));
   }
@@ -75,7 +72,8 @@ class PostponedCreateTimeController extends GetxController {
     var nowInMs = DateTime.now().millisecondsSinceEpoch;
     var todayStartTimeInMs =
         _getTodayTimeInMs(startTime['hour'], startTime['minute']);
-    var todayEndTimeInMs = _getTodayTimeInMs(endTime['hour'], endTime['minute']);
+    var todayEndTimeInMs =
+        _getTodayTimeInMs(endTime['hour'], endTime['minute']);
     var stepTimeInMs = _getMsFromHoursAndMinutes(step['hour'], step['minute']);
     return _findNextPostTime(
       posts,

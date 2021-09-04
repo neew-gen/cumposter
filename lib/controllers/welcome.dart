@@ -16,18 +16,16 @@ class WelcomeController extends GetxController {
     await _fetchCredentials();
     if (accessToken != null && userId != null) {
       ManagedGroupsController.to.fetchManagedGroups();
-      Timer(Duration(seconds: 1), () async {
-        Get.off(() => HomeScreen());
-      });
+      Get.off(() => HomeScreen());
     } else {
       Get.off(() => AuthScreen());
     }
   }
 
   _fetchCredentials() async {
-    var fetchedAccessToken = await AccessToken.get();
+    String? fetchedAccessToken = await AccessToken.get();
     accessToken = fetchedAccessToken;
-    var fetchedUserId = await UserId.get();
+    String? fetchedUserId = await UserId.get();
     userId = fetchedUserId;
   }
 }

@@ -6,12 +6,11 @@ class DebugController extends GetxController {
 
   static DebugController get to => Get.find();
 
-  updateDebugConsole(input, from) {
+  updateDebugConsole(input) {
     var inputToString = input.toString();
     var date = DateTime.now().toLocal().toString();
     debugConsole.add({
       'date': date,
-      'from': from,
       'text': inputToString,
     });
   }
@@ -19,12 +18,11 @@ class DebugController extends GetxController {
     debugConsole.value = [];
   }
 
-  updateDebugErrors(input, from) {
+  updateDebugErrors(input) {
     var inputToString = input.toString();
     var date = DateTime.now().toLocal().toString();
     debugErrors.add({
       'date': date,
-      'from': from,
       'text': inputToString,
     });
   }

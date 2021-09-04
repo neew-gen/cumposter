@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vk_group_admin/screens/welcome.dart';
@@ -12,6 +13,12 @@ import 'controllers/postponed/posts.dart';
 import 'controllers/welcome.dart';
 
 void main() {
+  FlutterError.onError = (FlutterErrorDetails details) {
+    FlutterError.dumpErrorToConsole(details);
+    if (kReleaseMode) {
+      DebugController.to.updateDebugErrors(details);
+    }
+  };
   runApp(App());
 }
 
@@ -51,7 +58,8 @@ class InitialBinding implements Bindings {
   @override
   void dependencies() {
     Get.put<WelcomeController>(WelcomeController(), permanent: true);
-    Get.put<ManagedGroupsController>(ManagedGroupsController(), permanent: true);
+    Get.put<ManagedGroupsController>(ManagedGroupsController(),
+        permanent: true);
     Get.put<PostponedPostsController>(PostponedPostsController(),
         permanent: true);
     Get.put<DebugController>(DebugController(), permanent: true);
