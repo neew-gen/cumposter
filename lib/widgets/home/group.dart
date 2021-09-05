@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:vk_group_admin/controllers/groups/current.dart';
-import 'package:vk_group_admin/models/managed_groups_model.dart';
+import 'package:cumposter/controllers/groups/current.dart';
+import 'package:cumposter/models/managed_groups_model.dart';
 import 'package:get/get.dart';
-import 'package:vk_group_admin/screens/postponed_posts.dart';
+import 'package:cumposter/screens/postponed_posts.dart';
 
 import 'group_menu.dart';
 

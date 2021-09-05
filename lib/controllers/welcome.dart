@@ -1,9 +1,9 @@
 import 'dart:async';
 
 import 'package:get/get.dart';
-import 'package:vk_group_admin/screens/auth.dart';
-import 'package:vk_group_admin/screens/home.dart';
-import 'package:vk_group_admin/utilities/credentials.dart';
+import 'package:cumposter/screens/auth.dart';
+import 'package:cumposter/screens/home.dart';
+import 'package:cumposter/utilities/credentials.dart';
 
 import 'groups/managed.dart';
 

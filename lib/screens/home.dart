@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:vk_group_admin/controllers/groups/managed.dart';
-import 'package:vk_group_admin/widgets/home/groups_list.dart';
-import 'package:vk_group_admin/widgets/home/options.dart';
+import 'package:cumposter/controllers/groups/managed.dart';
+import 'package:cumposter/widgets/home/groups_list.dart';
+import 'package:cumposter/widgets/home/options.dart';
 
 class HomeScreen extends StatelessWidget {
   @override

@@ -1,12 +1,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.vk_group_admin">
+    package="com.genatre.cumposter">
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
    <application
         android:requestLegacyExternalStorage="true"
-        android:label="vk_group_admin"
+        android:label="Cumposter"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

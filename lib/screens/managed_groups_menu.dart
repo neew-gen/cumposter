@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vk_group_admin/screens/postponed_posts.dart';
+import 'package:cumposter/screens/postponed_posts.dart';
 
 class ManagedGroupsMenuScreen extends StatelessWidget {
   @override

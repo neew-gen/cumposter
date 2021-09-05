@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vk_group_admin/controllers/options/debug.dart';
+import 'package:cumposter/controllers/options/debug.dart';
 import 'package:get/get.dart';
 
 import 'debug_item.dart';

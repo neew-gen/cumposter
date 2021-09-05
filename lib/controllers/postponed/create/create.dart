@@ -6,16 +6,16 @@ import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:http_parser/http_parser.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:vk_group_admin/controllers/groups/current.dart';
-import 'package:vk_group_admin/controllers/options/debug.dart';
-import 'package:vk_group_admin/controllers/postponed/create/time.dart';
-import 'package:vk_group_admin/enums/post_enums.dart';
-import 'package:vk_group_admin/models/images_model.dart';
-import 'package:vk_group_admin/utilities/date/unix_time.dart';
+import 'package:cumposter/controllers/groups/current.dart';
+import 'package:cumposter/controllers/options/debug.dart';
+import 'package:cumposter/controllers/postponed/create/time.dart';
+import 'package:cumposter/enums/post_enums.dart';
+import 'package:cumposter/models/images_model.dart';
+import 'package:cumposter/utilities/date/unix_time.dart';
 import 'package:http/http.dart' as http;
-import 'package:vk_group_admin/utilities/vk/get/get_wall_upload_server.dart';
-import 'package:vk_group_admin/utilities/vk/post/save_wall_photo.dart';
-import 'package:vk_group_admin/utilities/vk/post/wall_post.dart';
+import 'package:cumposter/utilities/vk/get/get_wall_upload_server.dart';
+import 'package:cumposter/utilities/vk/post/save_wall_photo.dart';
+import 'package:cumposter/utilities/vk/post/wall_post.dart';
 import '../posts.dart';
 import 'images.dart';
 import 'options.dart';
@@ -32,7 +32,6 @@ class PostponedCreateController extends GetxController {
     var nextPostTime = PostponedCreateTimeController.to.nextPostTime;
 
     var statusMessages = [];
-    print(postingStatus);
     if (postingStatus.value == PostingStatus.inProgress) {
       canCreate.value = {
         'canCreateStatus': false,

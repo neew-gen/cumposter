@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:vk_group_admin/widgets/postponed/post/post_attachments.dart';
-import 'package:vk_group_admin/widgets/postponed/post/post_controls.dart';
-import 'package:vk_group_admin/widgets/postponed/post/post_info.dart';
-import 'package:vk_group_admin/widgets/postponed/post/post_text.dart';
+import 'package:cumposter/widgets/postponed/post/post_attachments.dart';
+import 'package:cumposter/widgets/postponed/post/post_controls.dart';
+import 'package:cumposter/widgets/postponed/post/post_info.dart';
+import 'package:cumposter/widgets/postponed/post/post_text.dart';
 
 class PostponedPost extends StatelessWidget {
   final postData;

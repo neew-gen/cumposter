@@ -4,7 +4,7 @@ import 'package:ext_storage/ext_storage.dart';
 import 'package:get/get.dart';
 import 'package:mime/mime.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:vk_group_admin/models/images_model.dart';
+import 'package:cumposter/models/images_model.dart';
 import 'package:uuid/uuid.dart';
 
 class PostponedCreateImagesController extends GetxController {

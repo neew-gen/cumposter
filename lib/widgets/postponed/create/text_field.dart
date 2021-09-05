@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:vk_group_admin/controllers/postponed/create/create.dart';
-import 'package:vk_group_admin/controllers/postponed/create/options.dart';
+import 'package:cumposter/controllers/postponed/create/create.dart';
+import 'package:cumposter/controllers/postponed/create/options.dart';
 
 class PostponedCreatePanelTextField extends StatefulWidget {
   @override

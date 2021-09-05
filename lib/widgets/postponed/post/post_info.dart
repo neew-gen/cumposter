@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:vk_group_admin/controllers/postponed/posts.dart';
-import 'package:vk_group_admin/utilities/date/unix_time.dart';
+import 'package:cumposter/controllers/postponed/posts.dart';
+import 'package:cumposter/utilities/date/unix_time.dart';
 
 class PostInfo extends StatelessWidget {
   final postData;

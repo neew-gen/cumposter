@@ -1,38 +1,43 @@
+import 'dart:async';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:vk_group_admin/screens/welcome.dart';
+import 'package:cumposter/screens/welcome.dart';
 
 import 'controllers/groups/current.dart';
 import 'controllers/groups/managed.dart';
+import 'controllers/groups/settings.dart';
 import 'controllers/options/debug.dart';
 import 'controllers/postponed/create/create.dart';
 import 'controllers/postponed/create/images.dart';
 import 'controllers/postponed/create/time.dart';
 import 'controllers/postponed/posts.dart';
 import 'controllers/welcome.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
-  FlutterError.onError = (FlutterErrorDetails details) {
-    FlutterError.dumpErrorToConsole(details);
-    if (kReleaseMode) {
-      DebugController.to.updateDebugErrors(details);
-    }
-  };
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  // runZonedGuarded(() {
+  //   runApp(App());
+  // }, (Object error, StackTrace stackTrace) {
+  //   // Whenever an error occurs, call the `_reportError` function. This sends
+  //   // Dart errors to the dev console or Sentry depending on the environment.
+  //   print(123);
+  //   DebugController.to.updateDebugErrors(error);
+  // });
+  // FlutterError.onError = (FlutterErrorDetails details) {
+  //   print(123);
+  //   FlutterError.dumpErrorToConsole(details);
+  //   DebugController.to.updateDebugErrors(details);
+  // };
   runApp(App());
 }
 
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // This widget is the root of your application.
-    // return GetMaterialApp(
-    //   title: 'Flutter Demo',
-    //   theme: ThemeData(
-    //     primarySwatch: Colors.blue,
-    //   ),
-    //   home: WelcomeScreen(),
-    // );
     return GestureDetector(
       onTap: () {
         FocusScopeNode currentFocus = FocusScope.of(context);
@@ -70,5 +75,6 @@ class InitialBinding implements Bindings {
     Get.put<PostponedCreateTimeController>(PostponedCreateTimeController(),
         permanent: true);
     Get.put<CurrentGroupController>(CurrentGroupController(), permanent: true);
+    Get.put<GroupSettingsController>(GroupSettingsController(), permanent: true);
   }
 }

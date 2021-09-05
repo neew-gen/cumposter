@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'image_checkbox.dart';
+import 'image_delete_button.dart';
 
 class PostponedAddScreenImage extends StatelessWidget {
   final _imageObject;
@@ -26,11 +27,7 @@ class PostponedAddScreenImage extends StatelessWidget {
       Image.file(
         _imageObject.imageFile,
       ),
-      // Obx(
-      //   () => Image.file(
-      //     ImagesFromGalleryController.to.imageList[_index],
-      //   ),
-      // ),
+      ImageDeleteButton(_imageObject.imageFile),
       Align(
         alignment: Alignment.topRight,
         child: Padding(

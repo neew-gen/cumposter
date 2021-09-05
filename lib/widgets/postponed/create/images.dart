@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:vk_group_admin/controllers/postponed/create/images.dart';
+import 'package:cumposter/controllers/postponed/create/images.dart';
 
 import 'image.dart';
 

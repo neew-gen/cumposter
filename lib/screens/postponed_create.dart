@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:vk_group_admin/controllers/postponed/posts.dart';
-import 'package:vk_group_admin/widgets/postponed/create/images.dart';
-import 'package:vk_group_admin/widgets/postponed/create/panel.dart';
+import 'package:cumposter/controllers/postponed/posts.dart';
+import 'package:cumposter/widgets/postponed/create/images.dart';
+import 'package:cumposter/widgets/postponed/create/panel.dart';
 
 class PostponedCreateScreen extends StatelessWidget {
   @override

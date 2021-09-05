@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vk_group_admin/widgets/postponed/create/text_field.dart';
+import 'package:cumposter/widgets/postponed/create/text_field.dart';
 
 import 'create_button.dart';
 import 'date_picker.dart';

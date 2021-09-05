@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:vk_group_admin/controllers/groups/managed.dart';
-import 'package:vk_group_admin/models/managed_groups_model.dart';
+import 'package:cumposter/controllers/groups/managed.dart';
+import 'package:cumposter/models/managed_groups_model.dart';
 import 'package:get/get.dart';
 
 import 'group.dart';

@@ -3,7 +3,7 @@ import 'dart:convert';
 import '../../credentials.dart';
 import 'package:http/http.dart' as http;
 
-getWallUploadServer(int groupId) async {
+getWallUploadServer(String groupId) async {
   var token = await AccessToken.get();
   var res = await http.get(Uri.parse(
       'https://api.vk.com/method/photos.getWallUploadServer?group_id=$groupId&access_token=$token&v=5.131'));

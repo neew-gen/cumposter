@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:vk_group_admin/models/managed_groups_model.dart';
+import 'package:cumposter/models/managed_groups_model.dart';
 
 import '../../credentials.dart';
 import 'package:http/http.dart';

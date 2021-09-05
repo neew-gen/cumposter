@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
-import 'package:vk_group_admin/controllers/groups/current.dart';
-import 'package:vk_group_admin/utilities/vk/delete/delete_postponed_post.dart';
-import 'package:vk_group_admin/utilities/vk/get/get_postponed_posts.dart';
-import 'package:vk_group_admin/utilities/vk/get/get_users.dart';
+import 'package:cumposter/controllers/groups/current.dart';
+import 'package:cumposter/utilities/vk/delete/delete_postponed_post.dart';
+import 'package:cumposter/utilities/vk/get/get_postponed_posts.dart';
+import 'package:cumposter/utilities/vk/get/get_users.dart';
 
 class PostponedPostsController extends GetxController {
   static PostponedPostsController get to => Get.find();

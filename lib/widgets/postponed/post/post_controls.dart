@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vk_group_admin/controllers/postponed/posts.dart';
+import 'package:cumposter/controllers/postponed/posts.dart';
 
 class PostControls extends StatelessWidget {
   final postId;

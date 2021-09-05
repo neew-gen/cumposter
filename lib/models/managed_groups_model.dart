@@ -4,3 +4,7 @@ class ManagedGroup {
   String avatarUrl;
   ManagedGroup(this.id, this.name, this.avatarUrl);
 }
+
+class GroupOptions {
+
+}

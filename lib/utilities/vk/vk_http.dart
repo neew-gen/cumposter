@@ -1,5 +1,5 @@
 import 'package:http/http.dart' as http;
-import 'package:vk_group_admin/utilities/credentials.dart';
+import 'package:cumposter/utilities/credentials.dart';
 
 class VkHttp {
   get(url, params) async {

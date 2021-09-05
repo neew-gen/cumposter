@@ -1,4 +1,4 @@
-package com.example.vk_group_admin
+package com.genatre.cumposter
 
 import io.flutter.embedding.android.FlutterActivity
 

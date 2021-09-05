@@ -1,27 +1,23 @@
+import 'package:cumposter/controllers/groups/settings.dart';
+import 'package:cumposter/models/time_models.dart';
 import 'package:get/get.dart';
-import 'package:vk_group_admin/controllers/postponed/posts.dart';
+import 'package:cumposter/controllers/postponed/posts.dart';
 
 class PostponedCreateTimeController extends GetxController {
   static PostponedCreateTimeController get to => Get.find();
-
-  final Map<String, int> _startTime = {
-    'hour': 6,
-    'minute': 30,
-  };
-  final Map<String, int> _endTime = {
-    'hour': 21,
-    'minute': 30,
-  };
-  final Map<String, int> _step = {
-    'hour': 1,
-    'minute': 0,
-  };
+  //
+  // final StartTime _startTime = StartTime(6, 30);
+  // final EndTime _endTime = EndTime(21, 30);
+  // final StepTime _step = StepTime(1, 0);
 
   var nextPostTime = {}.obs;
   void fetchNextPostTime() {
     var postponedPosts = PostponedPostsController.to.postponedPosts;
+    var startTime = GroupSettingsController.to.postTimeSettings['startTime'];
+    var endTime = GroupSettingsController.to.postTimeSettings['endTime'];
+    var stepTime = GroupSettingsController.to.postTimeSettings['stepTime'];
     var nextPostTimeInMs =
-        _getNextPostTimeInMs(postponedPosts, _startTime, _endTime, _step);
+        _getNextPostTimeInMs(postponedPosts, startTime, endTime, stepTime);
     nextPostTime.value = _formatNextPostTime(
         DateTime.fromMillisecondsSinceEpoch(nextPostTimeInMs));
   }
@@ -68,13 +64,14 @@ class PostponedCreateTimeController extends GetxController {
     };
   }
 
-  _getNextPostTimeInMs(posts, startTime, endTime, step) {
+  _getNextPostTimeInMs(
+      posts, StartTime startTime, EndTime endTime, StepTime step) {
     var nowInMs = DateTime.now().millisecondsSinceEpoch;
     var todayStartTimeInMs =
-        _getTodayTimeInMs(startTime['hour'], startTime['minute']);
+        _getTodayTimeInMs(startTime.hour, startTime.minute);
     var todayEndTimeInMs =
-        _getTodayTimeInMs(endTime['hour'], endTime['minute']);
-    var stepTimeInMs = _getMsFromHoursAndMinutes(step['hour'], step['minute']);
+        _getTodayTimeInMs(endTime.hour, endTime.minute);
+    var stepTimeInMs = _getMsFromHoursAndMinutes(step.hour, step.minute);
     return _findNextPostTime(
       posts,
       nowInMs,

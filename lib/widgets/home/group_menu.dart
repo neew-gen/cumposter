@@ -1,11 +1,10 @@
+import 'package:cumposter/screens/group_settings.dart';
 import 'package:flutter/material.dart';
-import 'package:vk_group_admin/controllers/groups/current.dart';
-import 'package:vk_group_admin/controllers/groups/managed.dart';
-import 'package:vk_group_admin/screens/managed_groups_menu.dart';
+import 'package:cumposter/controllers/groups/current.dart';
 import 'package:get/get.dart';
-import 'package:vk_group_admin/screens/postponed_posts.dart';
+import 'package:cumposter/screens/postponed_posts.dart';
 
-enum NextPage { postponed }
+enum NextPage { postponed, options }
 
 class HomeGroupMenu extends StatelessWidget {
   final _group;
@@ -13,17 +12,17 @@ class HomeGroupMenu extends StatelessWidget {
   HomeGroupMenu(this._group);
   @override
   Widget build(context) {
-    // final CurrentGroupController _currentGroupController =
-    //     Get.put(CurrentGroupController());
-    //
-    // _goToManagedGroupsMenuScreen(groupInfo) {
-    //   _currentGroupController.setCurrentGroup(groupInfo);
-    //   Get.to(() => ManagedGroupsMenuScreen());
-    // }
+    _setCurrentGroup() {
+      CurrentGroupController.to.setCurrentGroup(_group);
+    }
+
     _goToNextPage(nextPage) {
+      _setCurrentGroup();
       if (nextPage == NextPage.postponed) {
-        CurrentGroupController.to.setCurrentGroup(_group);
         Get.to(() => PostponedPostsScreen());
+      }
+      if (nextPage == NextPage.options) {
+        Get.to(() => GroupSettings());
       }
     }
 
@@ -35,6 +34,10 @@ class HomeGroupMenu extends StatelessWidget {
         const PopupMenuItem<NextPage>(
           value: NextPage.postponed,
           child: Text('Отложенные записи'),
+        ),
+        const PopupMenuItem<NextPage>(
+          value: NextPage.options,
+          child: Text('Настройки группы'),
         ),
       ],
     );
