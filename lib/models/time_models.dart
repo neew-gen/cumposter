@@ -5,7 +5,7 @@ class StartTime {
   Map<String, int> toMap() {
     return {
       'hour': hour,
-      'age': minute,
+      'minute': minute,
     };
   }
 }
@@ -17,7 +17,7 @@ class EndTime {
   Map<String, int> toMap() {
     return {
       'hour': hour,
-      'age': minute,
+      'minute': minute,
     };
   }
 }
@@ -29,7 +29,7 @@ class StepTime {
   Map<String, int> toMap() {
     return {
       'hour': hour,
-      'age': minute,
+      'minute': minute,
     };
   }
 }
