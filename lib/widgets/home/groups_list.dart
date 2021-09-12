@@ -9,13 +9,21 @@ class HomeGroupsList extends StatelessWidget {
   @override
   Widget build(context) {
     ManagedGroupsController.to.fetchManagedGroups();
-
     return Obx(
-      () => Column(children: [
-        for (ManagedGroup managedGroup
-            in ManagedGroupsController.to.managedGroups)
-          HomeGroupItem(managedGroup),
-      ]),
+      () => ListView.builder(
+        itemCount: ManagedGroupsController.to.managedGroups.length,
+        itemBuilder: (BuildContext context, int index) {
+          return HomeGroupItem(ManagedGroupsController.to.managedGroups[index]);
+        },
+      ),
     );
+
+    // return Obx(
+    //   () => Column(children: [
+    //     for (ManagedGroup managedGroup
+    //         in ManagedGroupsController.to.managedGroups)
+    //       HomeGroupItem(managedGroup),
+    //   ]),
+    // );
   }
 }

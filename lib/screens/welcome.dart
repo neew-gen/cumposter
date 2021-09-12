@@ -11,11 +11,25 @@ class WelcomeScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Image(
+              image: AssetImage(
+                'assets/images/cumposter_logo.png',
+              ),
+              width: 200,
+            ),
+          ],
+        ),
+      ),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
             Text(
-              "VK Group Admin",
+              'logo by OLEG',
               style: TextStyle(
-                fontSize: 30,
-                color: Colors.blue,
+                fontSize: 13,
+                color: Color.fromRGBO(39, 135, 245, 1),
               ),
             ),
           ],

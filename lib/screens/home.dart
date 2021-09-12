@@ -12,12 +12,7 @@ class HomeScreen extends StatelessWidget {
         title: const Text('Главное меню'),
         automaticallyImplyLeading: false,
       ),
-      body: Column(
-        children: [
-          HomeGroupsList(),
-          HomeOptions(),
-        ],
-      ),
+      body: HomeGroupsList(),
     );
   }
 }
