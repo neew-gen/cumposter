@@ -1,13 +1,16 @@
+import 'package:cumposter/controllers/postponed/create/options.dart';
 import 'package:flutter/material.dart';
 import 'package:cumposter/widgets/postponed/create/text_field.dart';
+import 'package:get/get.dart';
 
 import 'create_button.dart';
 import 'date_picker.dart';
+import 'show_options_switch.dart';
 
 class PostponedCreateScreenPanel extends StatelessWidget {
-  // _buildDeleteCheckbox() {
-  //   return PostponedAddDeleteCheckbox();
-  // }
+  _buildShowOptionsSwitch() {
+    return ShowOptionsSwitch();
+  }
 
   _buildTextField() {
     return PostponedCreatePanelTextField();
@@ -21,17 +24,16 @@ class PostponedCreateScreenPanel extends StatelessWidget {
     return PostponedCreatePanelCreateButton();
   }
 
-
-
-
-  _buildColumnChildren() {
+  _buildColumnChildren(isShowOptions) {
     List<Widget> widgets = [];
 
-    // var deleteCheckbox = _buildDeleteCheckbox();
-    // widgets.create(deleteCheckbox);
+    var showOptionsCheckbox = _buildShowOptionsSwitch();
+    widgets.add(showOptionsCheckbox);
 
-    var textField = _buildTextField();
-    widgets.add(textField);
+    if (isShowOptions) {
+      var textField = _buildTextField();
+      widgets.add(textField);
+    }
 
     var datePicker = _buildDatePicker();
     widgets.add(datePicker);
@@ -45,14 +47,14 @@ class PostponedCreateScreenPanel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(8.0),
-      color: Colors.white,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children:
-        _buildColumnChildren(),
-      ),
-    );
+        padding: EdgeInsets.all(8.0),
+        color: Colors.white,
+        child: Obx(
+          () => Column(
+            mainAxisSize: MainAxisSize.min,
+            children: _buildColumnChildren(PostponedCreateOptionsController.to.isShowOptions.value),
+          ),
+        ));
   }
 }
 

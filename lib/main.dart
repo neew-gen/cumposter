@@ -11,10 +11,13 @@ import 'controllers/groups/settings.dart';
 import 'controllers/options/debug.dart';
 import 'controllers/postponed/create/create.dart';
 import 'controllers/postponed/create/images.dart';
+import 'controllers/postponed/create/options.dart';
 import 'controllers/postponed/create/time.dart';
 import 'controllers/postponed/posts.dart';
 import 'controllers/welcome.dart';
 import 'package:firebase_core/firebase_core.dart';
+
+import 'constants/color_map.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -47,11 +50,11 @@ class App extends StatelessWidget {
         }
       },
       child: GetMaterialApp(
-        title: 'Flutter Demo',
+        title: 'Cumposter',
         initialBinding: InitialBinding(),
         // smartManagement: SmartManagement.onlyBuilder,
         theme: ThemeData(
-          primarySwatch: Colors.blue,
+          primarySwatch: MaterialColor(0xFF2787F5, colorMap),
         ),
         home: WelcomeScreen(),
       ),
@@ -76,5 +79,6 @@ class InitialBinding implements Bindings {
         permanent: true);
     Get.put<CurrentGroupController>(CurrentGroupController(), permanent: true);
     Get.put<GroupSettingsController>(GroupSettingsController(), permanent: true);
+    Get.put<PostponedCreateOptionsController>(PostponedCreateOptionsController(), permanent: true);
   }
 }

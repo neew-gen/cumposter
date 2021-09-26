@@ -11,9 +11,8 @@ class ManagedGroupsMenuScreen extends StatelessWidget {
         ),
         body: Column(children: [
           ListTile(
-            title: Text("Отложенные записи"),
+            title: Text('Отложенные записи'),
             onTap: () {
-
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => PostponedPostsScreen()),

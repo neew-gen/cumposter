@@ -79,6 +79,7 @@ class PostponedCreateController extends GetxController {
 
       var text = PostponedCreateOptionsController.to.text.value;
       var checkedImages = PostponedCreateImagesController.to.imagesList;
+      print(text);
       var imagesForPosting =
           checkedImages.where((image) => image.isChecked != false).toList();
       if (text.isEmpty && imagesForPosting.isEmpty) {
@@ -122,7 +123,7 @@ class PostponedCreateController extends GetxController {
         PostponedCreateTimeController.to.fetchNextPostTime();
         PostponedCreateTimeController.to.fetchDateRangeString();
         await PostponedCreateImagesController.to.fetchImagesFromGallery();
-        PostponedCreateOptionsController.to.updateText('');
+        PostponedCreateOptionsController.to.clearText();
         postingStatus.value = PostingStatus.notInProgress;
         fetchCanCreate();
       });

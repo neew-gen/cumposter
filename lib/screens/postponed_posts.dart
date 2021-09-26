@@ -1,4 +1,5 @@
 import 'package:cumposter/controllers/groups/settings.dart';
+import 'package:cumposter/controllers/postponed/create/options.dart';
 import 'package:flutter/material.dart';
 import 'package:cumposter/widgets/postponed/post/post.dart';
 import 'package:cumposter/controllers/postponed/posts.dart';
@@ -13,6 +14,7 @@ class PostponedPostsScreen extends StatelessWidget {
     // получаем настройки времени группы пока тут, чтобы когда пользователь
     // нажал создать запись, настройки уже были
     GroupSettingsController.to.fetchGroupTimeSettings();
+    PostponedCreateOptionsController.to.fetchShowOptions();
     _goToPostponedAddScreen() {
       Get.to(() => PostponedCreateScreen());
     }

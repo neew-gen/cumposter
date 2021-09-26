@@ -50,3 +50,26 @@ getPostTimeSettings(groupId) async {
 
   return {'startTime': startTime, 'endTime': endTime, 'stepTime': stepTime};
 }
+
+getShowOptions(groupId) async {
+  String? userId = await UserId.get();
+  FirebaseFirestore firestore = FirebaseFirestore.instance;
+  CollectionReference usersCol = firestore.collection('users');
+  var userDoc = usersCol.doc(userId);
+  CollectionReference groupsCol = userDoc.collection('groups');
+  var groupDoc = groupsCol.doc(groupId);
+  CollectionReference settingsCol = groupDoc.collection('settings');
+
+  DocumentSnapshot<Object?> isShowOptionsSnap =
+  await settingsCol.doc('isShowOptions').get();
+  Map<String, dynamic>? isShowOptionsData =
+  isShowOptionsSnap.data() as Map<String, dynamic>?;
+  bool isShowOptions = false;
+  if (isShowOptionsData == null) {
+    settingsCol.doc('isShowOptions').set({'isShowOptions': false});
+  } else {
+    isShowOptions = isShowOptionsSnap['isShowOptions'];
+  }
+
+  return isShowOptions;
+}
