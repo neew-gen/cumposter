@@ -41,6 +41,9 @@ dependencies:
   path_provider_ex: ^1.0.1
   permission_handler: ^8.1.4+2
   uuid: ^3.0.4
+  file_manager:
+    git:
+      url: https://github.com/DevsOnFlutter/file_manager.git
 
   # firebase plugins
   firebase_core: ^1.6.0

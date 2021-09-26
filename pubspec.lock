@@ -108,6 +108,15 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "6.1.2"
+  file_manager:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: HEAD
+      resolved-ref: "3500f93a3bf847a7328d500b1fe18aef95881e3f"
+      url: "https://github.com/DevsOnFlutter/file_manager.git"
+    source: git
+    version: "1.0.0"
   firebase_core:
     dependency: "direct main"
     description:

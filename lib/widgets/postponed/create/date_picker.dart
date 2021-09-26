@@ -66,38 +66,77 @@ class PostponedCreatePanelDatePicker extends StatelessWidget {
       PostponedCreateController.to.fetchCanCreate();
     }
 
-    return Obx(
-      () => Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(PostponedCreateTimeController.to.dateRangeString.value,
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Obx(
+          () => Text(PostponedCreateTimeController.to.dateRangeString.value,
               style: TextStyle(
                 fontSize: 13.0,
               )),
-          Row(
-            children: [
-              TextButton(
-                onPressed: _selectTime,
-                child: Text(_getTimeString(PostponedCreateTimeController.to.nextPostTime)),
+        ),
+        Row(
+          children: [
+            TextButton(
+              onPressed: _selectTime,
+              child: Obx(
+                () => Text(_getTimeString(
+                    PostponedCreateTimeController.to.nextPostTime)),
               ),
-              TextButton(
-                onPressed: _selectDate,
-                child: Text(_getDateString(PostponedCreateTimeController.to.nextPostTime)),
+            ),
+            TextButton(
+              onPressed: _selectDate,
+              child: Obx(
+                () => Text(_getDateString(
+                    PostponedCreateTimeController.to.nextPostTime)),
               ),
-              Padding(
-                padding: EdgeInsets.all(4.0),
-                child: IconButton(
-                  onPressed: _refreshDate,
-                  icon: Icon(
-                    Icons.update,
-                    color: Colors.blue,
-                  ),
+            ),
+            Padding(
+              padding: EdgeInsets.all(4.0),
+              child: IconButton(
+                onPressed: _refreshDate,
+                icon: Icon(
+                  Icons.update,
+                  color: Colors.blue,
                 ),
-              )
-            ],
-          ),
-        ],
-      ),
+              ),
+            )
+          ],
+        ),
+      ],
     );
+    // return Obx(
+    //   () => Row(
+    //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    //     children: [
+    //       Text(PostponedCreateTimeController.to.dateRangeString.value,
+    //           style: TextStyle(
+    //             fontSize: 13.0,
+    //           )),
+    //       Row(
+    //         children: [
+    //           TextButton(
+    //             onPressed: _selectTime,
+    //             child: Text(_getTimeString(PostponedCreateTimeController.to.nextPostTime)),
+    //           ),
+    //           TextButton(
+    //             onPressed: _selectDate,
+    //             child: Text(_getDateString(PostponedCreateTimeController.to.nextPostTime)),
+    //           ),
+    //           Padding(
+    //             padding: EdgeInsets.all(4.0),
+    //             child: IconButton(
+    //               onPressed: _refreshDate,
+    //               icon: Icon(
+    //                 Icons.update,
+    //                 color: Colors.blue,
+    //               ),
+    //             ),
+    //           )
+    //         ],
+    //       ),
+    //     ],
+    //   ),
+    // );
   }
 }

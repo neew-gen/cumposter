@@ -1,8 +1,8 @@
 import 'dart:io';
 
+import 'package:cumposter/utilities/files/images/is_image.dart';
 import 'package:ext_storage/ext_storage.dart';
 import 'package:get/get.dart';
-import 'package:mime/mime.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:cumposter/models/images_model.dart';
 import 'package:uuid/uuid.dart';
@@ -24,7 +24,7 @@ class PostponedCreateImagesController extends GetxController {
           Directory(downloadsFolderPath).listSync();
       List<File> imagesFiles = [];
       for (var file in allDownloadsFiles) {
-        if (isImage(file.path)) {
+        if (isImage(file)) {
           imagesFiles.add(file as File);
         }
       }
@@ -47,14 +47,5 @@ class PostponedCreateImagesController extends GetxController {
     var imageForUpdate =
         imagesList.where((image) => image.id == id).toList()[0];
     imageForUpdate.isChecked = value;
-  }
-}
-
-bool isImage(String path) {
-  final mimeType = lookupMimeType(path);
-  if (mimeType == null) {
-    return false;
-  } else {
-    return mimeType.startsWith('image/');
   }
 }
