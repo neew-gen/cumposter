@@ -1,3 +1,4 @@
+import 'package:cumposter/widgets/appbar_title.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:cumposter/controllers/postponed/posts.dart';
@@ -8,7 +9,7 @@ class PostponedCreateScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     _buildAppBar(postsLength) {
-      return Text('Создать запись ($postsLength/100)');
+      return AppbarTitle('Создать запись ($postsLength/100)');
     }
 
     return Scaffold(
@@ -16,6 +17,7 @@ class PostponedCreateScreen extends StatelessWidget {
         title: Obx(
           () => _buildAppBar(PostponedPostsController.to.postponedPosts.length),
         ),
+        automaticallyImplyLeading: false,
       ),
       body: PostponedCreateScreenImages(),
       bottomNavigationBar: StickyBottomAppBar(

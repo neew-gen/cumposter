@@ -9,10 +9,11 @@ class PostponedCreateOptionsController extends GetxController {
 
   Rx<bool> isShowOptions = false.obs;
   void fetchShowOptions() async {
-  var groupId = CurrentGroupController.to.currentGroup.value.id;
-  var res = await getShowOptions(groupId);
-  isShowOptions.value = res;
-}
+    var groupId = CurrentGroupController.to.currentGroup.value.id;
+    var res = await getShowOptions(groupId);
+    isShowOptions.value = res;
+  }
+
   Future<void> updateShowOptions(newValue) async {
     isShowOptions.value = newValue;
     var groupId = CurrentGroupController.to.currentGroup.value.id;
@@ -27,16 +28,23 @@ class PostponedCreateOptionsController extends GetxController {
     super.onInit();
     textController = TextEditingController();
   }
+
   @override
   void onClose() {
     textController.dispose();
   }
+
   void clearText() {
     textController.text = '';
     text.value = '';
   }
 
-  var deleteImageAfterSave = false.obs;
+  Rx<bool> deleteImageAfterSave = false.obs;
+  // void fetchShowOptions() async {
+  //   var groupId = CurrentGroupController.to.currentGroup.value.id;
+  //   var res = await getShowOptions(groupId);
+  //   isShowOptions.value = res;
+  // }
   void updateDeleteImageAfterSave(newValue) async {
     deleteImageAfterSave = newValue;
   }

@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -22,6 +23,32 @@ import 'constants/color_map.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  runApp(App());
+  // это работает
+  // runZoned(
+  //   () async {
+  //     WidgetsFlutterBinding.ensureInitialized();
+  //     await Firebase.initializeApp();
+  //     runApp(App());
+  //   },
+  //   zoneSpecification: ZoneSpecification(
+  //       print: (Zone self, ZoneDelegate parent, Zone zone, String line) {
+  //     DebugController.to.updateDebugConsole(line);
+  //     //save to a file or do whatever you want
+  //   }),
+  // );
+  // runZonedGuarded(() async {
+  //   WidgetsFlutterBinding.ensureInitialized();
+  //   FlutterError.onError = (FlutterErrorDetails details) {
+  //     FlutterError.dumpErrorToConsole(details);
+  //     DebugController.to.updateDebugErrors(details);
+  //     exit(1);
+  //   };
+  //   runApp(App());
+  // }, (Object error, StackTrace stack) {
+  //   DebugController.to.updateDebugErrors(error);
+  //   exit(1);
+  // });
   // runZonedGuarded(() {
   //   runApp(App());
   // }, (Object error, StackTrace stackTrace) {
@@ -35,7 +62,7 @@ Future<void> main() async {
   //   FlutterError.dumpErrorToConsole(details);
   //   DebugController.to.updateDebugErrors(details);
   // };
-  runApp(App());
+  // runApp(App());
 }
 
 class App extends StatelessWidget {
@@ -78,7 +105,10 @@ class InitialBinding implements Bindings {
     Get.put<PostponedCreateTimeController>(PostponedCreateTimeController(),
         permanent: true);
     Get.put<CurrentGroupController>(CurrentGroupController(), permanent: true);
-    Get.put<GroupSettingsController>(GroupSettingsController(), permanent: true);
-    Get.put<PostponedCreateOptionsController>(PostponedCreateOptionsController(), permanent: true);
+    Get.put<GroupSettingsController>(GroupSettingsController(),
+        permanent: true);
+    Get.put<PostponedCreateOptionsController>(
+        PostponedCreateOptionsController(),
+        permanent: true);
   }
 }

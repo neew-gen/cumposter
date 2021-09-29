@@ -6,6 +6,7 @@ import 'package:cumposter/controllers/postponed/create/time.dart';
 class PostponedCreatePanelDatePicker extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    print('build date picker');
     PostponedCreateTimeController.to.fetchNextPostTime();
     PostponedCreateTimeController.to.fetchDateRangeString();
 

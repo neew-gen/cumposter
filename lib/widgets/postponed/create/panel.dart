@@ -52,7 +52,8 @@ class PostponedCreateScreenPanel extends StatelessWidget {
         child: Obx(
           () => Column(
             mainAxisSize: MainAxisSize.min,
-            children: _buildColumnChildren(PostponedCreateOptionsController.to.isShowOptions.value),
+            children: _buildColumnChildren(
+                PostponedCreateOptionsController.to.isShowOptions.value),
           ),
         ));
   }

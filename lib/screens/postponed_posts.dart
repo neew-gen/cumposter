@@ -1,5 +1,6 @@
 import 'package:cumposter/controllers/groups/settings.dart';
 import 'package:cumposter/controllers/postponed/create/options.dart';
+import 'package:cumposter/widgets/appbar_title.dart';
 import 'package:flutter/material.dart';
 import 'package:cumposter/widgets/postponed/post/post.dart';
 import 'package:cumposter/controllers/postponed/posts.dart';
@@ -9,8 +10,7 @@ import 'package:get/get.dart';
 class PostponedPostsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    PostponedPostsController.to
-        .fetchPostponedPosts();
+    PostponedPostsController.to.fetchPostponedPosts();
     // получаем настройки времени группы пока тут, чтобы когда пользователь
     // нажал создать запись, настройки уже были
     GroupSettingsController.to.fetchGroupTimeSettings();
@@ -20,7 +20,7 @@ class PostponedPostsScreen extends StatelessWidget {
     }
 
     _buildAppBar(postsLength) {
-      return Text('Отложенные записи ($postsLength/100)');
+      return AppbarTitle('Отложенные записи ($postsLength/100)');
     }
 
     return Scaffold(
@@ -28,6 +28,7 @@ class PostponedPostsScreen extends StatelessWidget {
         title: Obx(
           () => _buildAppBar(PostponedPostsController.to.postponedPosts.length),
         ),
+        automaticallyImplyLeading: false,
       ),
       body: Obx(
         () => ListView.builder(

@@ -1,3 +1,4 @@
+import 'package:cumposter/constants/appbar_config.dart';
 import 'package:flutter/material.dart';
 import 'package:cumposter/widgets/options/debug_console.dart';
 import 'package:cumposter/widgets/options/debug_errors.dart';
@@ -7,13 +8,12 @@ class OptionsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Настройки приложения'),
+        title: const Text(
+          'Настройки приложения'
+        ),
       ),
       body: ListView(
-        children: [
-          DebugConsole(),
-          DebugErrors(),
-        ],
+        children: [Text('Тут что-то будет.')],
       ),
     );
   }
