@@ -28,7 +28,7 @@ class GroupOptionsTime extends StatelessWidget {
       );
       if (newTime != null) {
         GroupSettingsController.to.updateGroupTimeSettings(
-            _timeType, StartTime(newTime.hour, newTime.minute));
+            _timeType, PostTime(newTime.hour, newTime.minute));
       }
     }
 

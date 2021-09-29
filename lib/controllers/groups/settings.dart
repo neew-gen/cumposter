@@ -1,5 +1,6 @@
 import 'package:cumposter/utilities/firebase/get/get_group_settings.dart';
 import 'package:cumposter/utilities/firebase/update/update_group_settings.dart';
+import 'package:cumposter/utilities/group_params.dart';
 import 'package:get/get.dart';
 
 import 'current.dart';
@@ -14,6 +15,7 @@ class GroupSettingsController extends GetxController {
     var res = await getPostTimeSettings(groupId);
     defaultPostTimeSettings = res;
     postTimeSettings.value = res;
+    GroupParams().get();
   }
   updateGroupTimeSettings(field, value) async {
     postTimeSettings[field] = value;
