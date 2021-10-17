@@ -1,7 +1,6 @@
 import 'package:cumposter/controllers/groups/current.dart';
 import 'package:cumposter/utilities/firebase/get/get_group_settings.dart';
 import 'package:cumposter/utilities/firebase/update/update_group_settings.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class PostponedCreateOptionsController extends GetxController {
@@ -23,25 +22,6 @@ class PostponedCreateOptionsController extends GetxController {
     isInitUpdateBecauseChangeShowOptions.value = false;
   }
 
-  final GlobalKey<FormState> optionsFormKey = GlobalKey<FormState>();
-  late TextEditingController textController;
-  var text = ''.obs;
-  @override
-  void onInit() {
-    super.onInit();
-    textController = TextEditingController();
-  }
-
-  @override
-  void onClose() {
-    textController.dispose();
-  }
-
-  void clearText() {
-    textController.text = '';
-    text.value = '';
-  }
-
   Rx<bool> deleteImageAfterSave = false.obs;
   // void fetchShowOptions() async {
   //   var groupId = CurrentGroupController.to.currentGroup.value.id;
@@ -55,5 +35,11 @@ class PostponedCreateOptionsController extends GetxController {
   var signed = true.obs;
   void updateSigned(newValue) async {
     signed = newValue;
+  }
+
+  static initialBinding() {
+    Get.put<PostponedCreateOptionsController>(
+        PostponedCreateOptionsController(),
+        permanent: true);
   }
 }

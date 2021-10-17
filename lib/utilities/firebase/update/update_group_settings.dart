@@ -1,4 +1,4 @@
-import 'package:cumposter/models/time_models.dart';
+import 'package:cumposter/controllers/groups/current.dart';
 
 import '../../credentials.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -27,4 +27,18 @@ updateShowOptionsInFirebase(groupId, newValue) async {
       .collection('settings')
       .doc('isShowOptions')
       .update({'isShowOptions': newValue});
+}
+
+updateGroupParam(id, value) async {
+  final String? groupId = CurrentGroupController.to.currentGroup.value.id;
+  String? userId = await UserId.get();
+  FirebaseFirestore firestore = FirebaseFirestore.instance;
+  await firestore
+      .collection('users')
+      .doc(userId)
+      .collection('groups')
+      .doc(groupId)
+      .collection('settings')
+      .doc(id)
+      .update(value);
 }

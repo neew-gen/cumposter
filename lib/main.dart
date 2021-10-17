@@ -13,6 +13,7 @@ import 'controllers/options/debug.dart';
 import 'controllers/postponed/create/create.dart';
 import 'controllers/postponed/create/images.dart';
 import 'controllers/postponed/create/options.dart';
+import 'controllers/postponed/create/text.dart';
 import 'controllers/postponed/create/time.dart';
 import 'controllers/postponed/posts.dart';
 import 'controllers/welcome.dart';
@@ -110,5 +111,6 @@ class InitialBinding implements Bindings {
     Get.put<PostponedCreateOptionsController>(
         PostponedCreateOptionsController(),
         permanent: true);
+    PostponedCreateTextController.initialBinding();
   }
 }

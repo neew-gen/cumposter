@@ -56,7 +56,7 @@ class PostponedCreateTimeController extends GetxController {
   }
 
   _getNextPostTimeInMs(
-      posts, StartTime startTime, EndTime endTime, StepTime step) {
+      posts, PostTime startTime, PostTime endTime, PostTime step) {
     var nowInMs = DateTime.now().millisecondsSinceEpoch;
     var todayStartTimeInMs =
         _getTodayTimeInMs(startTime.hour, startTime.minute);
