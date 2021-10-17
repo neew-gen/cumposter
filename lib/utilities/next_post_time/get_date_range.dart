@@ -1,6 +1,9 @@
 String getDateRange(postTime) {
   DateTime now = DateTime.now();
-  final differenceBetweenDates = postTime.difference(now);
+  final nowOnlyDate = DateTime(now.year, now.month, now.day);
+  final postTimeOnlyDate =
+      DateTime(postTime.year, postTime.month, postTime.day);
+  final differenceBetweenDates = postTimeOnlyDate.difference(nowOnlyDate);
   final differenceInDays = differenceBetweenDates.inDays;
   switch (differenceInDays) {
     case 0:
