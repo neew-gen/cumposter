@@ -2,7 +2,6 @@
 // import 'package:vk_group_admin/controllers/groups/current.dart';
 // import 'package:vk_group_admin/controllers/groups/managed.dart';
 // import 'package:vk_group_admin/screens/managed_groups_menu.dart';
-// import 'package:get/get.dart';
 //
 // class ManagedGroupsScreen extends StatelessWidget {
 //   @override

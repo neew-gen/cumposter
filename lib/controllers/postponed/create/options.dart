@@ -8,6 +8,7 @@ class PostponedCreateOptionsController extends GetxController {
   static PostponedCreateOptionsController get to => Get.find();
 
   Rx<bool> isShowOptions = false.obs;
+  Rx<bool> isInitUpdateBecauseChangeShowOptions = false.obs;
   void fetchShowOptions() async {
     var groupId = CurrentGroupController.to.currentGroup.value.id;
     var res = await getShowOptions(groupId);
@@ -15,9 +16,11 @@ class PostponedCreateOptionsController extends GetxController {
   }
 
   Future<void> updateShowOptions(newValue) async {
+    isInitUpdateBecauseChangeShowOptions.value = true;
     isShowOptions.value = newValue;
     var groupId = CurrentGroupController.to.currentGroup.value.id;
     await updateShowOptionsInFirebase(groupId, newValue);
+    isInitUpdateBecauseChangeShowOptions.value = false;
   }
 
   final GlobalKey<FormState> optionsFormKey = GlobalKey<FormState>();

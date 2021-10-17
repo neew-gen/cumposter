@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:http_parser/http_parser.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -29,7 +28,7 @@ class PostponedCreateController extends GetxController {
 
   fetchCanCreate() {
     var postponedPosts = PostponedPostsController.to.postponedPosts;
-    var nextPostTime = PostponedCreateTimeController.to.nextPostTime;
+    var nextPostTime = PostponedCreateTimeController.to.nextPostTime.value;
 
     var statusMessages = [];
     if (postingStatus.value == PostingStatus.inProgress) {
@@ -51,13 +50,7 @@ class PostponedCreateController extends GetxController {
       }
     } else {
       var now = DateTime.now();
-      var nextPostDateTime = DateTime(
-          nextPostTime['year'],
-          nextPostTime['month'],
-          nextPostTime['day'],
-          nextPostTime['hour'],
-          nextPostTime['minute']);
-      if (nextPostDateTime.isBefore(now)) {
+      if (nextPostTime.isBefore(now)) {
         statusMessages.add('Некорректная дата');
         canCreate.value = {
           'canCreateStatus': false,
@@ -67,7 +60,7 @@ class PostponedCreateController extends GetxController {
       }
 
       var postsWithNextPostTime = postponedPosts.where((post) =>
-          mapEquals(formatTimeFromUnixToMapType(post['date']), nextPostTime));
+          getTimeFromUnixTime(post['date']) == nextPostTime);
       if (postsWithNextPostTime.isNotEmpty) {
         statusMessages.add('На эту дату уже запланирована запись');
         canCreate.value = {

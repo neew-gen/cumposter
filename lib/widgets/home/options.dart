@@ -2,7 +2,6 @@
 // import 'package:cumposter/controllers/groups/current.dart';
 // import 'package:cumposter/controllers/groups/managed.dart';
 // import 'package:cumposter/screens/managed_groups_menu.dart';
-// import 'package:get/get.dart';
 // import 'package:cumposter/screens/options.dart';
 //
 // import 'group.dart';

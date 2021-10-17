@@ -1,5 +1,6 @@
 import 'package:cumposter/controllers/groups/settings.dart';
 import 'package:cumposter/models/time_models.dart';
+import 'package:cumposter/utilities/next_post_time/get_date_range.dart';
 import 'package:get/get.dart';
 import 'package:cumposter/controllers/postponed/posts.dart';
 
@@ -10,7 +11,7 @@ class PostponedCreateTimeController extends GetxController {
   // final EndTime _endTime = EndTime(21, 30);
   // final StepTime _step = StepTime(1, 0);
 
-  var nextPostTime = {}.obs;
+  Rx<DateTime> nextPostTime = DateTime.now().obs;
   void fetchNextPostTime() {
     var postponedPosts = PostponedPostsController.to.postponedPosts;
     var startTime = GroupSettingsController.to.postTimeSettings['startTime'];
@@ -18,35 +19,25 @@ class PostponedCreateTimeController extends GetxController {
     var stepTime = GroupSettingsController.to.postTimeSettings['stepTime'];
     var nextPostTimeInMs =
         _getNextPostTimeInMs(postponedPosts, startTime, endTime, stepTime);
-    nextPostTime.value = _formatNextPostTime(
-        DateTime.fromMillisecondsSinceEpoch(nextPostTimeInMs));
+    print(DateTime.fromMillisecondsSinceEpoch(nextPostTimeInMs));
+    nextPostTime.value = DateTime.fromMillisecondsSinceEpoch(nextPostTimeInMs);
   }
 
-  void updateNextPostTime(Map<String, int> fieldsForUpdate) {
-    fieldsForUpdate.forEach((k, v) => nextPostTime[k] = v);
+  void updateNextPostTimeHourMinute(hour, minute) {
+    final currentNextPostTime = nextPostTime.value;
+    nextPostTime.value = DateTime(currentNextPostTime.year,
+        currentNextPostTime.month, currentNextPostTime.day, hour, minute);
+  }
+
+  void updateNextPostTimeYearMonthDay(year, month, day) {
+    final currentNextPostTime = nextPostTime.value;
+    nextPostTime.value = DateTime(
+        year, month, day, currentNextPostTime.hour, currentNextPostTime.minute);
   }
 
   var dateRangeString = ''.obs;
   void fetchDateRangeString() {
-    DateTime now = DateTime.now();
-    if (now.year == nextPostTime['year']) {
-      if (now.month == nextPostTime['month']) {
-        if (now.day == nextPostTime['day']) {
-          dateRangeString.value = 'Сегодня';
-        } else if (nextPostTime['day']! - now.day == 1) {
-          dateRangeString.value = 'Завтра';
-        } else if (nextPostTime['day']! - now.day == 2) {
-          dateRangeString.value = 'Послезавтра';
-        } else {
-          int dayRange = nextPostTime['day']! - now.day;
-          dateRangeString.value = 'Через $dayRange дня(ей)';
-        }
-      } else {
-        dateRangeString.value = '';
-      }
-    } else {
-      dateRangeString.value = '';
-    }
+    dateRangeString.value = getDateRange(nextPostTime.value);
   }
 
   Map<String, int> _formatNextPostTime(DateTime dateTime) {
@@ -69,8 +60,7 @@ class PostponedCreateTimeController extends GetxController {
     var nowInMs = DateTime.now().millisecondsSinceEpoch;
     var todayStartTimeInMs =
         _getTodayTimeInMs(startTime.hour, startTime.minute);
-    var todayEndTimeInMs =
-        _getTodayTimeInMs(endTime.hour, endTime.minute);
+    var todayEndTimeInMs = _getTodayTimeInMs(endTime.hour, endTime.minute);
     var stepTimeInMs = _getMsFromHoursAndMinutes(step.hour, step.minute);
     return _findNextPostTime(
       posts,

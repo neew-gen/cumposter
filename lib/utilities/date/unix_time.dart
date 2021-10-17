@@ -1,17 +1,17 @@
-formatTimeFromUnixToMapType(unixTime) {
-  var dateTime = DateTime.fromMillisecondsSinceEpoch(unixTime * 1000);
-  var year = dateTime.year;
-  var month = dateTime.month;
-  var day = dateTime.day;
-  var hour = dateTime.hour;
-  var minute = dateTime.minute;
-  return {
-    'year': year,
-    'month': month,
-    'day': day,
-    'hour': hour,
-    'minute': minute
-  };
+DateTime getTimeFromUnixTime(unixTime) {
+  return DateTime.fromMillisecondsSinceEpoch(unixTime * 1000);
+  // var year = dateTime.year;
+  // var month = dateTime.month;
+  // var day = dateTime.day;
+  // var hour = dateTime.hour;
+  // var minute = dateTime.minute;
+  // return {
+  //   'year': year,
+  //   'month': month,
+  //   'day': day,
+  //   'hour': hour,
+  //   'minute': minute
+  // };
 }
 
 formatMapTypeToUnix(time) {

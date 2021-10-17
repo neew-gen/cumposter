@@ -14,14 +14,35 @@ class HomeGroupItem extends StatelessWidget {
   @override
   Widget build(context) {
     return Card(
+      margin: EdgeInsets.all(2),
       child: ListTile(
-        leading: Image.network(_group.avatarUrl),
-        title: Text(
-          _group.name,
-          style: TextStyle(
-            fontSize: 12,
-          ),
+        leading: Image.network(
+          _group.avatarUrl,
         ),
+        title: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              _group.name,
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            Text(
+              'Количество участников: ${_group.membersCount}',
+              style: TextStyle(
+                fontSize: 14,
+              ),
+            ),
+          ],
+        ),
+        // title: Text(
+        //   _group.name,
+        //   style: TextStyle(
+        //     fontSize: 15,
+        //   ),
+        // ),
         onTap: () {
           CurrentGroupController.to.setCurrentGroup(_group);
           Get.to(() => PostponedPostsScreen());
