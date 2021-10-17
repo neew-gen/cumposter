@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:cumposter/screens/welcome.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'controllers/groups/current.dart';
 import 'controllers/groups/managed.dart';
@@ -24,46 +25,13 @@ import 'constants/color_map.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(App());
-  // это работает
-  // runZoned(
-  //   () async {
-  //     WidgetsFlutterBinding.ensureInitialized();
-  //     await Firebase.initializeApp();
-  //     runApp(App());
-  //   },
-  //   zoneSpecification: ZoneSpecification(
-  //       print: (Zone self, ZoneDelegate parent, Zone zone, String line) {
-  //     DebugController.to.updateDebugConsole(line);
-  //     //save to a file or do whatever you want
-  //   }),
-  // );
-  // runZonedGuarded(() async {
-  //   WidgetsFlutterBinding.ensureInitialized();
-  //   FlutterError.onError = (FlutterErrorDetails details) {
-  //     FlutterError.dumpErrorToConsole(details);
-  //     DebugController.to.updateDebugErrors(details);
-  //     exit(1);
-  //   };
-  //   runApp(App());
-  // }, (Object error, StackTrace stack) {
-  //   DebugController.to.updateDebugErrors(error);
-  //   exit(1);
-  // });
-  // runZonedGuarded(() {
-  //   runApp(App());
-  // }, (Object error, StackTrace stackTrace) {
-  //   // Whenever an error occurs, call the `_reportError` function. This sends
-  //   // Dart errors to the dev console or Sentry depending on the environment.
-  //   print(123);
-  //   DebugController.to.updateDebugErrors(error);
-  // });
-  // FlutterError.onError = (FlutterErrorDetails details) {
-  //   print(123);
-  //   FlutterError.dumpErrorToConsole(details);
-  //   DebugController.to.updateDebugErrors(details);
-  // };
-  // runApp(App());
+  await SentryFlutter.init(
+    (options) {
+      options.dsn =
+          'https://717da5351764443c9b86ec57d90a112a@o1041882.ingest.sentry.io/6010841';
+    },
+    appRunner: () => runApp(App()),
+  );
 }
 
 class App extends StatelessWidget {

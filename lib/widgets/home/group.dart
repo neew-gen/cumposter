@@ -25,14 +25,15 @@ class HomeGroupItem extends StatelessWidget {
             Text(
               _group.name,
               style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.w600,
+                fontSize: 16,
+                fontWeight: FontWeight.w400,
               ),
             ),
             Text(
               'Количество участников: ${_group.membersCount}',
               style: TextStyle(
                 fontSize: 14,
+                fontWeight: FontWeight.w300,
               ),
             ),
           ],

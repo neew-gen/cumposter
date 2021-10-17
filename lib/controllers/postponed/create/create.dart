@@ -142,7 +142,7 @@ class PostponedCreateController extends GetxController {
 
 _wallPost(currentGroupId, uploadedImageList) async {
   var text = PostponedCreateTextController.to.text;
-  var nextPostTime = PostponedCreateTimeController.to.nextPostTime;
+  var nextPostTime = PostponedCreateTimeController.to.nextPostTime.value;
   var nextPostTimeUnix = formatMapTypeToUnix(nextPostTime);
   var res = await wallPost(
       currentGroupId, text, uploadedImageList, 1, nextPostTimeUnix);

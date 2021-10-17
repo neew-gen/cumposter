@@ -13,10 +13,13 @@ DateTime getTimeFromUnixTime(unixTime) {
   //   'minute': minute
   // };
 }
-
-formatMapTypeToUnix(time) {
-  var dateInMs = DateTime(time['year'], time['month'], time['day'],
-          time['hour'], time['minute'])
-      .millisecondsSinceEpoch;
+// formatMapTypeToUnix(time) {
+//   var dateInMs = DateTime(time['year'], time['month'], time['day'],
+//       time['hour'], time['minute'])
+//       .millisecondsSinceEpoch;
+//   return dateInMs ~/ 1000;
+// }
+formatMapTypeToUnix(DateTime time) {
+  var dateInMs = time.millisecondsSinceEpoch;
   return dateInMs ~/ 1000;
 }
