@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:cumposter/controllers/postponed/create/text.dart';
 import 'package:get/get.dart';
 import 'package:http_parser/http_parser.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -70,7 +71,7 @@ class PostponedCreateController extends GetxController {
         return;
       }
 
-      var text = PostponedCreateOptionsController.to.text.value;
+      var text = PostponedCreateTextController.to.text.value;
       var checkedImages = PostponedCreateImagesController.to.imagesList;
       print(text);
       var imagesForPosting =
@@ -116,7 +117,7 @@ class PostponedCreateController extends GetxController {
         PostponedCreateTimeController.to.fetchNextPostTime();
         PostponedCreateTimeController.to.fetchDateRangeString();
         await PostponedCreateImagesController.to.fetchImagesFromGallery();
-        PostponedCreateOptionsController.to.clearText();
+        PostponedCreateTextController.to.clearText();
         postingStatus.value = PostingStatus.notInProgress;
         fetchCanCreate();
       });
@@ -140,7 +141,7 @@ class PostponedCreateController extends GetxController {
 }
 
 _wallPost(currentGroupId, uploadedImageList) async {
-  var text = PostponedCreateOptionsController.to.text;
+  var text = PostponedCreateTextController.to.text;
   var nextPostTime = PostponedCreateTimeController.to.nextPostTime;
   var nextPostTimeUnix = formatMapTypeToUnix(nextPostTime);
   var res = await wallPost(
