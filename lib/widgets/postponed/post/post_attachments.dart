@@ -1,3 +1,4 @@
+import 'package:cumposter/widgets/full_screen_image_wrapper/full_screen_image_wrapper.dart';
 import 'package:flutter/material.dart';
 
 class PostAttachments extends StatefulWidget {
@@ -26,7 +27,10 @@ class PostAttachmentsState extends State<PostAttachments> {
         ),
         itemBuilder: (BuildContext context, int index) {
           var imageUrl = getImageUrl(photos, photos[index]["photo"]["sizes"]);
-          return Image.network(imageUrl);
+          return FullScreenImageWrapper(
+            child: Image.network(imageUrl),
+            dark: true,
+          );
         },
       ),
     );

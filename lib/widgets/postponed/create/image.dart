@@ -1,3 +1,4 @@
+import 'package:cumposter/widgets/full_screen_image_wrapper/full_screen_image_wrapper.dart';
 import 'package:flutter/material.dart';
 
 import 'image_checkbox.dart';
@@ -24,8 +25,11 @@ class PostponedAddScreenImage extends StatelessWidget {
     //   ]),
     // );
     return Stack(alignment: Alignment.bottomCenter, children: <Widget>[
-      Image.file(
-        _imageObject.imageFile,
+      FullScreenImageWrapper(
+        child: Image.file(
+          _imageObject.imageFile,
+        ),
+        dark: true,
       ),
       ImageDeleteButton(_imageObject.imageFile),
       Align(
