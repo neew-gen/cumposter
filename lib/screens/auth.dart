@@ -35,20 +35,20 @@ class AuthState extends State<AuthScreen> {
 
     onUrlChanged =
         flutterWebviewPlugin.onUrlChanged.listen((String oauthUrl) async {
-      if (oauthUrl.contains("user_denied")) {
+      if (oauthUrl.contains('user_denied')) {
         flutterWebviewPlugin.close();
         Navigator.push(
           context,
           MaterialPageRoute(builder: (context) => AuthScreen()),
         );
       }
-      if (oauthUrl.contains("access_token=")) {
+      if (oauthUrl.contains('access_token=')) {
         var authParams = AuthParams.getFromOauthUrl(oauthUrl);
 
-        var accessToken = authParams["access_token"];
+        var accessToken = authParams['access_token'];
         await AccessToken.set(accessToken);
 
-        var userId = authParams["user_id"];
+        var userId = authParams['user_id'];
         await UserId.set(userId);
 
         flutterWebviewPlugin.close();
@@ -75,7 +75,7 @@ class AuthState extends State<AuthScreen> {
     return WebviewScaffold(
         url: vkAuthUrl,
         appBar: AppBar(
-          title: Text("Авторизация ВК"),
+          title: Text('Авторизация ВК'),
         ));
   }
 }
