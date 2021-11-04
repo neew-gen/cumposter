@@ -1,8 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
-import 'package:cumposter/screens/home.dart';
-import 'package:cumposter/screens/managed_groups.dart';
+import 'package:cumposter/screens/home/home.dart';
 import 'package:cumposter/utilities/credentials.dart';
 
 class AuthScreen extends StatefulWidget {

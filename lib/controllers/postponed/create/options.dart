@@ -1,4 +1,7 @@
 import 'package:cumposter/controllers/groups/current.dart';
+import 'package:cumposter/controllers/groups/settings.dart';
+import 'package:cumposter/providers/firebase/postponed/create/time_settings.dart';
+import 'package:cumposter/providers/firebase/postponed/create/view_settings.dart';
 import 'package:cumposter/utilities/firebase/get/get_group_settings.dart';
 import 'package:cumposter/utilities/firebase/update/update_group_settings.dart';
 import 'package:get/get.dart';
@@ -8,28 +11,28 @@ class PostponedCreateOptionsController extends GetxController {
 
   Rx<bool> isShowOptions = false.obs;
   Rx<bool> isInitUpdateBecauseChangeShowOptions = false.obs;
-  void fetchShowOptions() async {
-    var groupId = CurrentGroupController.to.currentGroup.value.id;
-    var res = await getShowOptions(groupId);
-    isShowOptions.value = res;
-  }
+  // void fetchShowOptions() async {
+  // print(isShowOptions);
+  // var groupId = CurrentGroupController.to.currentGroup.value.id;
+  // var res = await getShowOptions(groupId);
+  // isShowOptions.value = res;
+  // }
 
   Future<void> updateShowOptions(newValue) async {
     isInitUpdateBecauseChangeShowOptions.value = true;
-    isShowOptions.value = newValue;
-    var groupId = CurrentGroupController.to.currentGroup.value.id;
-    await updateShowOptionsInFirebase(groupId, newValue);
+    await GroupSettingsController.to
+        .updateGroupViewSettings('isShowOptions', newValue);
     isInitUpdateBecauseChangeShowOptions.value = false;
   }
 
-  Rx<bool> deleteImageAfterSave = false.obs;
+  Rx<bool> deleteAfterPosting = false.obs;
   // void fetchShowOptions() async {
   //   var groupId = CurrentGroupController.to.currentGroup.value.id;
   //   var res = await getShowOptions(groupId);
   //   isShowOptions.value = res;
   // }
-  void updateDeleteImageAfterSave(newValue) async {
-    deleteImageAfterSave = newValue;
+  void updateDeleteAfterPosting(newValue) async {
+    deleteAfterPosting.value = newValue;
   }
 
   var signed = true.obs;

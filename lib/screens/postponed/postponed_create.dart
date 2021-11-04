@@ -1,9 +1,9 @@
-import 'package:cumposter/widgets/appbar_title.dart';
+import 'package:cumposter/widgets/shared/appbar_title/appbar_title.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:cumposter/controllers/postponed/posts.dart';
-import 'package:cumposter/widgets/postponed/create/images.dart';
-import 'package:cumposter/widgets/postponed/create/panel.dart';
+import 'package:cumposter/widgets/postponed/create/images/images.dart';
+import 'package:cumposter/widgets/postponed/create/create_panel/panel.dart';
 
 class PostponedCreateScreen extends StatelessWidget {
   @override

@@ -1,8 +1,8 @@
-import 'package:cumposter/screens/group_settings.dart';
+import 'package:cumposter/screens/home/group_settings.dart';
 import 'package:flutter/material.dart';
 import 'package:cumposter/controllers/groups/current.dart';
 import 'package:get/get.dart';
-import 'package:cumposter/screens/postponed_posts.dart';
+import 'package:cumposter/screens/postponed/postponed_posts.dart';
 
 enum NextPage { postponed, options }
 

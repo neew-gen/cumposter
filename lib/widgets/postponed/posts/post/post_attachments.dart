@@ -1,4 +1,4 @@
-import 'package:cumposter/widgets/full_screen_image_wrapper/full_screen_image_wrapper.dart';
+import 'package:cumposter/widgets/shared/full_screen_image_wrapper/full_screen_image_wrapper.dart';
 import 'package:flutter/material.dart';
 
 class PostAttachments extends StatefulWidget {

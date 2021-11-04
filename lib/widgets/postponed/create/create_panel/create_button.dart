@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:cumposter/controllers/postponed/create/create.dart';
-import 'package:cumposter/widgets/postponed/create/status.dart';
+import 'package:cumposter/widgets/postponed/create/create_panel/status.dart';
 
 class PostponedCreatePanelCreateButton
     extends GetWidget<PostponedCreateController> {

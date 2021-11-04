@@ -18,7 +18,6 @@ Future<List<ManagedGroup>> getManagedGroups() async {
           '&access_token=$token'
           '&v=5.131'));
   var decodedBody = jsonDecode(res.body);
-  print(decodedBody['response']['items'][0]['members_count']);
   List<ManagedGroup> managedGroups = [];
   for (var item in decodedBody['response']['items']) {
     ManagedGroup managedGroup =

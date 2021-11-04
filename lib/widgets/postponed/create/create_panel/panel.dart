@@ -1,6 +1,6 @@
 import 'package:cumposter/controllers/postponed/create/options.dart';
 import 'package:flutter/material.dart';
-import 'package:cumposter/widgets/postponed/create/text_field.dart';
+import 'package:cumposter/widgets/postponed/create/create_panel/text_field.dart';
 import 'package:get/get.dart';
 
 import 'create_button.dart';

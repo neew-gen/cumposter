@@ -1,7 +1,7 @@
 import 'package:cumposter/constants/appbar_config.dart';
 import 'package:flutter/material.dart';
-import 'package:cumposter/widgets/options/debug_console.dart';
-import 'package:cumposter/widgets/options/debug_errors.dart';
+// import 'package:cumposter/widgets/options/debug_console.dart';
+// import 'package:cumposter/widgets/options/debug_errors.dart';
 
 class OptionsScreen extends StatelessWidget {
   @override

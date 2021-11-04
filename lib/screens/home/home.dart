@@ -1,8 +1,8 @@
 import 'package:cumposter/constants/appbar_config.dart';
-import 'package:cumposter/widgets/appbar_title.dart';
+import 'package:cumposter/widgets/shared/appbar_title/appbar_title.dart';
 import 'package:flutter/material.dart';
 import 'package:cumposter/controllers/groups/managed.dart';
-import 'package:cumposter/widgets/home/groups_list.dart';
+import 'package:cumposter/widgets/home/home/groups_list.dart';
 import 'package:get/get.dart';
 
 import 'options.dart';

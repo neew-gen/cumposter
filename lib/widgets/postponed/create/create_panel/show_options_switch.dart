@@ -10,7 +10,6 @@ class _State extends State<ShowOptionsSwitch> {
   var _switchValue = false;
   @override
   void initState() {
-    print('initState');
     _switchValue = PostponedCreateOptionsController.to.isShowOptions.value;
     super.initState();
   }
@@ -18,7 +17,6 @@ class _State extends State<ShowOptionsSwitch> {
   @override
   void didUpdateWidget(oldWidget) {
     super.didUpdateWidget(oldWidget);
-    print('didUpdateWidget');
     _switchValue = PostponedCreateOptionsController.to.isShowOptions.value;
   }
 
@@ -39,7 +37,6 @@ class _State extends State<ShowOptionsSwitch> {
             setState(() {
               _switchValue = !_switchValue;
             });
-            print(_switchValue);
             PostponedCreateOptionsController.to.updateShowOptions(_switchValue);
           },
         )

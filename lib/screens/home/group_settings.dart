@@ -1,5 +1,5 @@
 import 'package:cumposter/controllers/groups/settings.dart';
-import 'package:cumposter/widgets/group_settings/start_time.dart';
+import 'package:cumposter/widgets/home/group_settings/start_time.dart';
 import 'package:flutter/material.dart';
 
 class GroupSettings extends StatelessWidget {
