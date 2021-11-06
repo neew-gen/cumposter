@@ -1,9 +1,4 @@
-import 'package:cumposter/controllers/groups/current.dart';
 import 'package:cumposter/controllers/groups/settings.dart';
-import 'package:cumposter/providers/firebase/postponed/create/time_settings.dart';
-import 'package:cumposter/providers/firebase/postponed/create/view_settings.dart';
-import 'package:cumposter/utilities/firebase/get/get_group_settings.dart';
-import 'package:cumposter/utilities/firebase/update/update_group_settings.dart';
 import 'package:get/get.dart';
 
 class PostponedCreateOptionsController extends GetxController {

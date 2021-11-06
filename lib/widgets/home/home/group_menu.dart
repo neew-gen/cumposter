@@ -1,10 +1,11 @@
 import 'package:cumposter/screens/home/group_settings.dart';
+import 'package:cumposter/screens/unsubscribers/unsubscribers.dart';
 import 'package:flutter/material.dart';
 import 'package:cumposter/controllers/groups/current.dart';
 import 'package:get/get.dart';
 import 'package:cumposter/screens/postponed/postponed_posts.dart';
 
-enum NextPage { postponed, options }
+enum NextPage { postponed, options, unsubscribers }
 
 class HomeGroupMenu extends StatelessWidget {
   final _group;
@@ -24,6 +25,9 @@ class HomeGroupMenu extends StatelessWidget {
       if (nextPage == NextPage.options) {
         Get.to(() => GroupSettings());
       }
+      if (nextPage == NextPage.unsubscribers) {
+        Get.to(() => UnsubscribersScreen());
+      }
     }
 
     return PopupMenuButton<NextPage>(
@@ -38,6 +42,10 @@ class HomeGroupMenu extends StatelessWidget {
         const PopupMenuItem<NextPage>(
           value: NextPage.options,
           child: Text('Настройки группы'),
+        ),
+        const PopupMenuItem<NextPage>(
+          value: NextPage.unsubscribers,
+          child: Text('Кто отписался'),
         ),
       ],
     );

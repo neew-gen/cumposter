@@ -2,8 +2,6 @@ import 'package:cumposter/controllers/postponed/create/options.dart';
 import 'package:cumposter/providers/firebase/firebase_provider.dart';
 import 'package:cumposter/providers/firebase/postponed/create/time_settings.dart';
 import 'package:cumposter/providers/firebase/postponed/create/view_settings.dart';
-import 'package:cumposter/utilities/firebase/get/get_group_settings.dart';
-import 'package:cumposter/utilities/firebase/update/update_group_settings.dart';
 import 'package:cumposter/utilities/next_post_time/convert_post_time.dart';
 import 'package:get/get.dart';
 import 'package:cumposter/utilities/credentials.dart';

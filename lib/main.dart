@@ -15,6 +15,7 @@ import 'controllers/postponed/create/options.dart';
 import 'controllers/postponed/create/text.dart';
 import 'controllers/postponed/create/time.dart';
 import 'controllers/postponed/posts.dart';
+import 'controllers/unsubscribers/unsubscribers.dart';
 import 'controllers/welcome.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -79,5 +80,6 @@ class InitialBinding implements Bindings {
         PostponedCreateOptionsController(),
         permanent: true);
     PostponedCreateTextController.initialBinding();
+    UnsubscribersController.initialBinding();
   }
 }

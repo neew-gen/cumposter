@@ -12,6 +12,17 @@ class FirebaseProvider {
     final data = documentSnapshot.data();
     return data;
   }
+  static checkDocIsExist(colPath, docId) async {
+    FirebaseFirestore firestore = FirebaseFirestore.instance;
+    print(colPath);
+
+    CollectionReference collectionReference = firestore.collection(colPath);
+
+    DocumentSnapshot<Object?> documentSnapshot =
+    await collectionReference.doc(docId).get();
+
+    return documentSnapshot.exists;
+  }
 
   static getColData(colPath) async {
     FirebaseFirestore firestore = FirebaseFirestore.instance;
