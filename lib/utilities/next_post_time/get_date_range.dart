@@ -19,23 +19,4 @@ String getDateRange(postTime) {
     default:
       return 'Через $differenceInDays дней';
   }
-  return '$differenceInDays';
-  // if (now.year == postTime['year']) {
-  //   if (now.month == postTime['month']) {
-  //     if (now.day == postTime['day']) {
-  //       return 'Сегодня';
-  //     } else if (postTime['day']! - now.day == 1) {
-  //       return 'Завтра';
-  //     } else if (postTime['day']! - now.day == 2) {
-  //       return 'Послезавтра';
-  //     } else {
-  //       int dayRange = postTime['day']! - now.day;
-  //       return 'Через $dayRange дня(ей)';
-  //     }
-  //   } else {
-  //     return '';
-  //   }
-  // } else {
-  //   return '';
-  // }
 }

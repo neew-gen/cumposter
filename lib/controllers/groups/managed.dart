@@ -7,7 +7,7 @@ class ManagedGroupsController extends GetxController {
   RxList<ManagedGroup> managedGroups = <ManagedGroup>[].obs;
 
   void fetchManagedGroups() async {
-    List<ManagedGroup> fetchedManagedGroups = await getManagedGroups();
-    managedGroups.value = fetchedManagedGroups;
+    List<ManagedGroup>? fetchedManagedGroups = await getManagedGroups();
+    managedGroups.value = fetchedManagedGroups!;
   }
 }

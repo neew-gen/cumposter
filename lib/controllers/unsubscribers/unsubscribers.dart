@@ -6,9 +6,8 @@ class UnsubscribersController extends GetxController {
   static UnsubscribersController get to => Get.find();
 
   var unsubscribers = [].obs;
-  void fetchUnsubscribers() {
-    UnsubscribersProvider().fetch();
-    // currentGroup.value = groupInfo;
+  Future<void> fetchUnsubscribers() async {
+    unsubscribers.value = await UnsubscribersProvider().fetch();
   }
 
   static initialBinding() {
