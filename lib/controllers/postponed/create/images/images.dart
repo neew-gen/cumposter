@@ -8,6 +8,8 @@ import 'package:cumposter/models/images_model.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:uuid/uuid.dart';
 
+import 'images_path.dart';
+
 class PostponedCreateImagesController extends GetxController {
   static PostponedCreateImagesController get to => Get.find();
   RxList<ImageFromGallery> imagesList = <ImageFromGallery>[].obs;
@@ -17,32 +19,29 @@ class PostponedCreateImagesController extends GetxController {
       await Permission.manageExternalStorage.request();
       await Permission.storage.request();
 
-      String? downloadsFolderPath =
-          await ExtStorage.getExternalStoragePublicDirectory(
-              ExtStorage.DIRECTORY_DOWNLOADS);
+      var folderPath =
+          PostponedCreateImagesPathController.to.imagesPath.value;
 
-      if (downloadsFolderPath != null) {
-        List<FileSystemEntity> allDownloadsFiles =
-            Directory(downloadsFolderPath).listSync();
-        List<File> imagesFiles = [];
-        for (var file in allDownloadsFiles) {
-          if (isImage(file.path)) {
-            imagesFiles.add(file as File);
-          }
+      List<FileSystemEntity> allDownloadsFiles =
+          Directory(folderPath).listSync();
+      List<File> imagesFiles = [];
+      for (var file in allDownloadsFiles) {
+        if (isImage(file.path)) {
+          imagesFiles.add(file as File);
         }
-        // сортировка по убыванию
-        imagesFiles.sort(
-            (a, b) => b.statSync().changed.compareTo(a.statSync().changed));
-
-        List<ImageFromGallery> postponedCreateImages = [];
-        for (int i = 0; i < imagesFiles.length; i++) {
-          Uuid uuid = Uuid();
-          ImageFromGallery postponedCreateImage =
-              ImageFromGallery(uuid.v4(), imagesFiles[i], false);
-          postponedCreateImages.add(postponedCreateImage);
-        }
-        imagesList.value = postponedCreateImages;
       }
+      // сортировка по убыванию
+      imagesFiles.sort(
+          (a, b) => b.statSync().changed.compareTo(a.statSync().changed));
+
+      List<ImageFromGallery> postponedCreateImages = [];
+      for (int i = 0; i < imagesFiles.length; i++) {
+        Uuid uuid = Uuid();
+        ImageFromGallery postponedCreateImage =
+            ImageFromGallery(uuid.v4(), imagesFiles[i], false);
+        postponedCreateImages.add(postponedCreateImage);
+      }
+      imagesList.value = postponedCreateImages;
     } catch (exception, stackTrace) {
       await Sentry.captureException(
         exception,

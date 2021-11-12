@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:cumposter/controllers/postponed/create/images/images.dart';
 import 'package:cumposter/controllers/postponed/create/images/images_path.dart';
 import 'package:cumposter/widgets/stateful_wrapper.dart';
 import 'package:file_manager/file_manager.dart';
@@ -27,6 +28,7 @@ class PostponedCreateImageDirectory extends StatelessWidget {
     var currentDir = controller.getCurrentDirectory;
     var path = currentDir.path;
     PostponedCreateImagesPathController.to.updateImagesPath(path);
+    PostponedCreateImagesController.to.fetchImagesFromGallery();
   }
 
   @override
@@ -63,7 +65,10 @@ class PostponedCreateImageDirectory extends StatelessWidget {
                         ),
                       ),
                       TextButton(
-                        onPressed: _clickChooseFolder,
+                        onPressed: () {
+                          _clickChooseFolder();
+                          Navigator.pop(context);
+                        },
                         child: Text(
                           'Выбрать папку',
                           style: TextStyle(

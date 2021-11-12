@@ -25,14 +25,14 @@ import 'constants/color_map.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  await SentryFlutter.init(
-    (postingOptions) {
-      postingOptions.dsn =
-          'https://717da5351764443c9b86ec57d90a112a@o1041882.ingest.sentry.io/6010841';
-    },
-    appRunner: () => runApp(App()),
-  );
-  // runApp(App());
+  // await SentryFlutter.init(
+  //   (postingOptions) {
+  //     postingOptions.dsn =
+  //         'https://717da5351764443c9b86ec57d90a112a@o1041882.ingest.sentry.io/6010841';
+  //   },
+  //   appRunner: () => runApp(App()),
+  // );
+  runApp(App());
 }
 
 class App extends StatelessWidget {
