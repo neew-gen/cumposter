@@ -1,9 +1,9 @@
 import 'dart:async';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:cumposter/screens/welcome.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'controllers/groups/current.dart';
 import 'controllers/groups/managed.dart';
@@ -11,28 +11,27 @@ import 'controllers/groups/settings.dart';
 import 'controllers/options/debug.dart';
 import 'controllers/postponed/create/create.dart';
 import 'controllers/postponed/create/images.dart';
+import 'controllers/postponed/create/options.dart';
+import 'controllers/postponed/create/text.dart';
 import 'controllers/postponed/create/time.dart';
 import 'controllers/postponed/posts.dart';
+import 'controllers/unsubscribers/unsubscribers.dart';
 import 'controllers/welcome.dart';
 import 'package:firebase_core/firebase_core.dart';
+
+import 'constants/color_map.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  // runZonedGuarded(() {
-  //   runApp(App());
-  // }, (Object error, StackTrace stackTrace) {
-  //   // Whenever an error occurs, call the `_reportError` function. This sends
-  //   // Dart errors to the dev console or Sentry depending on the environment.
-  //   print(123);
-  //   DebugController.to.updateDebugErrors(error);
-  // });
-  // FlutterError.onError = (FlutterErrorDetails details) {
-  //   print(123);
-  //   FlutterError.dumpErrorToConsole(details);
-  //   DebugController.to.updateDebugErrors(details);
-  // };
-  runApp(App());
+  await SentryFlutter.init(
+    (postingOptions) {
+      postingOptions.dsn =
+          'https://717da5351764443c9b86ec57d90a112a@o1041882.ingest.sentry.io/6010841';
+    },
+    appRunner: () => runApp(App()),
+  );
+  // runApp(App());
 }
 
 class App extends StatelessWidget {
@@ -47,11 +46,11 @@ class App extends StatelessWidget {
         }
       },
       child: GetMaterialApp(
-        title: 'Flutter Demo',
+        title: 'Cumposter',
         initialBinding: InitialBinding(),
         // smartManagement: SmartManagement.onlyBuilder,
         theme: ThemeData(
-          primarySwatch: Colors.blue,
+          primarySwatch: MaterialColor(0xFF2787F5, colorMap),
         ),
         home: WelcomeScreen(),
       ),
@@ -75,6 +74,12 @@ class InitialBinding implements Bindings {
     Get.put<PostponedCreateTimeController>(PostponedCreateTimeController(),
         permanent: true);
     Get.put<CurrentGroupController>(CurrentGroupController(), permanent: true);
-    Get.put<GroupSettingsController>(GroupSettingsController(), permanent: true);
+    Get.put<GroupSettingsController>(GroupSettingsController(),
+        permanent: true);
+    Get.put<PostponedCreateOptionsController>(
+        PostponedCreateOptionsController(),
+        permanent: true);
+    PostponedCreateTextController.initialBinding();
+    UnsubscribersController.initialBinding();
   }
 }

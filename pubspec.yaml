@@ -15,7 +15,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 0.1.4+1
+version: 0.2.1+2
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
@@ -25,29 +25,28 @@ dependencies:
     sdk: flutter
   flutter_webview_plugin: ^0.4.0
   shared_preferences: ^2.0.6
-  http: ^0.13.3
+  http: ^0.13.4
   flutter_datetime_picker:
     git:
       url: https://github.com/Realank/flutter_datetime_picker.git
       ref: master
   get: ^4.3.8
-  mime: ^1.0.0
+  mime: ^1.0.1
   http_parser: ^4.0.0
   byte_flow: ^1.0.0
   path_provider: ^2.0.2
   ext_storage:
     git:
-      url: git://github.com/GitJournal/ext_storage.git
-  path_provider_ex: ^1.0.1
+      url: git://github.com/lavahasif/ext_storage_ups.git
   permission_handler: ^8.1.4+2
   uuid: ^3.0.4
-  file_manager:
-    git:
-      url: https://github.com/DevsOnFlutter/file_manager.git
-
+  dart_style: ^2.2.0
+  sentry_flutter: ^6.0.1
+  intl: ^0.17.0
+  url_launcher: ^6.0.12
   # firebase plugins
-  firebase_core: ^1.6.0
-  cloud_firestore: ^2.5.1
+  firebase_core: ^1.8.0
+  cloud_firestore: ^2.5.4
 
 dev_dependencies:
   flutter_test:

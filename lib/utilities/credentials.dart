@@ -2,12 +2,12 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthParams {
   static Map<String, String> getFromOauthUrl(String oauthUrl) {
-    String clearedString = oauthUrl.substring(32);
-    List<String> authParamsAsStringArray = clearedString.split("&");
+    final String clearedString = oauthUrl.substring(32);
+    final List<String> authParamsAsStringArray = clearedString.split('&');
     Map<String, String> authParams = {};
 
     for (String paramString in authParamsAsStringArray) {
-      List<String> parts = paramString.split("=");
+      final List<String> parts = paramString.split('=');
       String paramKey = parts[0];
       String paramValue = parts[1];
       authParams[paramKey] = paramValue;
@@ -19,13 +19,13 @@ class AuthParams {
 class AccessToken {
   static Future<String?> get() async {
     final prefs = await SharedPreferences.getInstance();
-    return prefs.getString("access_token");
+    return prefs.getString('access_token');
   }
 
   static Future<void> set(String? token) async {
     if (token != null) {
       final prefs = await SharedPreferences.getInstance();
-      prefs.setString("access_token", token);
+      prefs.setString('access_token', token);
     }
   }
 }
@@ -33,13 +33,13 @@ class AccessToken {
 class UserId {
   static Future<String?> get() async {
     final prefs = await SharedPreferences.getInstance();
-    return prefs.getString("user_id");
+    return prefs.getString('user_id');
   }
 
   static Future<void> set(String? token) async {
     if (token != null) {
       final prefs = await SharedPreferences.getInstance();
-      prefs.setString("user_id", token);
+      prefs.setString('user_id', token);
     }
   }
 }
