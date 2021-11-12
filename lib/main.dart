@@ -10,7 +10,8 @@ import 'controllers/groups/managed.dart';
 import 'controllers/groups/settings.dart';
 import 'controllers/options/debug.dart';
 import 'controllers/postponed/create/create.dart';
-import 'controllers/postponed/create/images.dart';
+import 'controllers/postponed/create/images/images.dart';
+import 'controllers/postponed/create/images/images_path.dart';
 import 'controllers/postponed/create/options.dart';
 import 'controllers/postponed/create/text.dart';
 import 'controllers/postponed/create/time.dart';
@@ -81,5 +82,6 @@ class InitialBinding implements Bindings {
         permanent: true);
     PostponedCreateTextController.initialBinding();
     UnsubscribersController.initialBinding();
+    PostponedCreateImagesPathController.initialBinding();
   }
 }

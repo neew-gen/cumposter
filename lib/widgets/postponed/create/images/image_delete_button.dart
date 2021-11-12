@@ -1,4 +1,4 @@
-import 'package:cumposter/controllers/postponed/create/images.dart';
+import 'package:cumposter/controllers/postponed/create/images/images.dart';
 import 'package:cumposter/utilities/files/images/delete_gallery_image.dart';
 import 'package:flutter/material.dart';
 

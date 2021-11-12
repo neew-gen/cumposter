@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cumposter/controllers/postponed/create/create.dart';
-import 'package:cumposter/controllers/postponed/create/images.dart';
+import 'package:cumposter/controllers/postponed/create/images/images.dart';
 
 // class PostponedAddScreenImageCheckbox extends StatelessWidget {
 //   final int _id;

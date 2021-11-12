@@ -1,5 +1,7 @@
+import 'package:cumposter/controllers/postponed/create/images/images_path.dart';
 import 'package:cumposter/controllers/postponed/create/options.dart';
 import 'package:cumposter/providers/firebase/firebase_provider.dart';
+import 'package:cumposter/providers/firebase/postponed/create/images_settings.dart';
 import 'package:cumposter/providers/firebase/postponed/create/time_settings.dart';
 import 'package:cumposter/providers/firebase/postponed/create/view_settings.dart';
 import 'package:cumposter/utilities/next_post_time/convert_post_time.dart';
@@ -13,9 +15,12 @@ class GroupSettingsController extends GetxController {
   var postTimeSettings = {}.obs;
   // var defaultPostTimeSettings = {};
   var timeSettings = TimeSettings();
-  var viewSettings = ViewSettings();
 
   var postViewSettings = {}.obs;
+  var viewSettings = ViewSettings();
+
+  var postImagesSettings = {}.obs;
+  var imagesSettings = ImagesSettings();
 
   void fetchAllGroupSettings() async {
     // fetch time settings
@@ -23,12 +28,18 @@ class GroupSettingsController extends GetxController {
     var groupId = CurrentGroupController.to.currentGroup.value.id;
     var allGroupSettings = await FirebaseProvider.getColData(
         'users/$userId/groups/$groupId/settings');
+
     var time = await timeSettings.fetch(allGroupSettings['time']);
     postTimeSettings.value = time;
+
     var view = await viewSettings.fetch(allGroupSettings['view']);
     postViewSettings.value = view;
     PostponedCreateOptionsController.to.isShowOptions.value =
         view['isShowOptions'];
+
+    var images = await imagesSettings.fetch(allGroupSettings['images']);
+    postImagesSettings.value = images;
+    PostponedCreateImagesPathController.to.imagesPath.value = images['path'];
   }
 
   void fetchGroupTimeSettings() async {

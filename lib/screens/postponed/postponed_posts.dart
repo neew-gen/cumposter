@@ -4,7 +4,7 @@ import 'package:cumposter/widgets/shared/appbar_title/appbar_title.dart';
 import 'package:flutter/material.dart';
 import 'package:cumposter/widgets/postponed/posts/post/post.dart';
 import 'package:cumposter/controllers/postponed/posts.dart';
-import 'package:cumposter/screens/postponed/postponed_create.dart';
+import 'package:cumposter/screens/postponed/postponed_create/postponed_create.dart';
 import 'package:get/get.dart';
 
 class PostponedPostsScreen extends StatelessWidget {

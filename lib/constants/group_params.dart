@@ -14,3 +14,6 @@ const defaultTimeSettings = {
 const defaultViewSettings = {
   'isShowOptions': false,
 };
+const defaultImagesSettings = {
+  'path': 'default'
+};

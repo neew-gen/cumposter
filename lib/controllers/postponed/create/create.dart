@@ -17,7 +17,7 @@ import 'package:cumposter/utilities/vk/get/get_wall_upload_server.dart';
 import 'package:cumposter/utilities/vk/post/save_wall_photo.dart';
 import 'package:cumposter/utilities/vk/post/wall_post.dart';
 import '../posts.dart';
-import 'images.dart';
+import 'images/images.dart';
 import 'options.dart';
 import 'package:mime/mime.dart';
 
