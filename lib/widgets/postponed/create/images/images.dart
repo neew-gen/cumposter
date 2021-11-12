@@ -1,5 +1,7 @@
 import 'package:cumposter/controllers/postponed/create/images/images_path.dart';
 import 'package:cumposter/screens/postponed/postponed_create/create_image_directory.dart';
+import 'package:cumposter/utilities/files/directories/path.dart';
+import 'package:cumposter/utilities/text/trim_string.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -8,6 +10,11 @@ import 'package:cumposter/controllers/postponed/create/images/images.dart';
 import 'image.dart';
 
 class PostponedCreateScreenImages extends StatelessWidget {
+  _getImagesPathText(path) {
+    var trimmedPath = getLastItemOfPath(path);
+    return 'Имя папки: $trimmedPath';
+  }
+
   @override
   Widget build(BuildContext context) {
     PostponedCreateImagesController.to.fetchImagesFromGallery();
@@ -21,7 +28,9 @@ class PostponedCreateScreenImages extends StatelessWidget {
             children: [
               Obx(
                 () => Text(
-                    'Путь: ${PostponedCreateImagesPathController.to.imagesPath}'),
+                  _getImagesPathText(
+                      PostponedCreateImagesPathController.to.imagesPath.value),
+                ),
               ),
               TextButton(
                 onPressed: () {
